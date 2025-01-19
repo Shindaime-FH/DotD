@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -22,11 +20,7 @@ public class Turret : MonoBehaviour
     {
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -55,7 +49,9 @@ public class Turret : MonoBehaviour
     }
     private void Shoot()
     {
-        Debug.Log("Shoot");
+        GameObject stoneObj = Instantiate(stonePrefab, firingPoint.position, Quaternion.identity);
+        Stone stoneScript = stoneObj.GetComponent<Stone>();
+        stoneScript.SetTarget(target);
     }
     private void FindTarget()
     {
@@ -75,6 +71,6 @@ public class Turret : MonoBehaviour
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,targetRotation, rotationSpeed * Time.deltaTime);
+        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }
