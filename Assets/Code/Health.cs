@@ -6,6 +6,8 @@ public class Health : MonoBehaviour
     [SerializeField] private int hitPoints = 2;
     [SerializeField] private int currencyworth = 50;
 
+    private bool isDestroyed = false;
+
     public void takeDamage(int dmg)
     {
         hitPoints -= dmg;
