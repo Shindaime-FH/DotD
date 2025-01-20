@@ -13,7 +13,7 @@ public class Stone : MonoBehaviour
     private Transform target;
     public void SetTarget(Transform _target)
     {
-        this.target = _target;
+        target = _target;
     }
 
     // Update is called once per frame
