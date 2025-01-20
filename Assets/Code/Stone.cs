@@ -9,6 +9,7 @@ public class Stone : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float stoneSpeed = 5f;
+    [SerializeField] private int stoneDamage =  1;
 
     private Transform target;
     public void SetTarget(Transform _target)
@@ -26,7 +27,8 @@ public class Stone : MonoBehaviour
         rb.linearVelocity = direction * stoneSpeed;
     }
     private void OnCollisionEnter2D(Collision2D other)
-    {   // Take health from enemy
+    {
+        other.gameObject.GetComponent<Health>().takeDamage(stoneDamage);
         Destroy(gameObject);
     }
 }
