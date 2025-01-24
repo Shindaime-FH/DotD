@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Plot : MonoBehaviour
 {
@@ -7,7 +11,7 @@ public class Plot : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
 
-    private GameObject turret;
+    private GameObject tower;
     private Color startColor;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,12 +32,20 @@ public class Plot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (turret != null) return;
+        if (tower != null) return;
 
-        GameObject turretToBuild = BuildManager.main.GetSelectedTurret();
+        Tower towerToBuild = BuildManager.main.GetSelectedTower();
+        if (towerToBuild.cost > LevelManager.main.currency)
+        {
+            Debug.Log("You can't afford this tower");
+            return;
+        }
+        
+        LevelManager.main.SpendCurrency(towerToBuild.cost);
+
         Vector3 newPosition = new Vector3(0,0.2F,0); // correction of prefab position for y 
-        turret = Instantiate(turretToBuild, transform.position + newPosition, Quaternion.identity);
-       
+        tower = Instantiate(towerToBuild.prefab, transform.position + newPosition, Quaternion.identity);
+        if (EventSystem.current.IsPointerOverGameObject()) return;
     }
 
 

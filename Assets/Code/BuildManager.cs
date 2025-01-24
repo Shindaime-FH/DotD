@@ -5,9 +5,10 @@ public class BuildManager : MonoBehaviour
     public static BuildManager main;
 
     [Header("References")]
-    [SerializeField] private GameObject[] turretPrefabs;
+    // [SerializeField] private GameObject[] turretPrefabs -> old reference
+    [SerializeField] private Tower[] towers;
 
-    private int selectedTurret = 0;
+    private int selectedTower = 0;
 
     private void Awake()
     {
@@ -25,9 +26,12 @@ public class BuildManager : MonoBehaviour
     {
         
     }
-
-    public GameObject GetSelectedTurret()
+    public Tower GetSelectedTower()
     {
-        return turretPrefabs[selectedTurret];
+        return towers[selectedTower];
+    }
+    public void SetSelectedTower(int _selectedTower)
+    {
+        selectedTower = _selectedTower;
     }
 }
