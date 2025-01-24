@@ -43,11 +43,29 @@ public class Plot : MonoBehaviour
         
         LevelManager.main.SpendCurrency(towerToBuild.cost);
 
-        Vector3 newPosition = new Vector3(0,0.2F,0); // correction of prefab position for y 
-        tower = Instantiate(towerToBuild.prefab, transform.position + newPosition, Quaternion.identity);
+        /*Vector3 newPosition = new Vector3(0,0.2f,0); // correction of prefab position for y 
+        tower = Instantiate(towerToBuild.prefab, transform.position + newPosition, Quaternion.identity);*/    //old code
+
+        /* Vector3 newPosition;
+
+        // Check for the type of tower and apply specific position correction
+        if (towerToBuild.prefab.name == "Mage Turret") // Replace "MageTower" with the exact prefab name
+        {
+            newPosition = new Vector3(0, 0.3f, 0); // Adjust the Y offset for the mage tower
+        }
+        else
+        {
+            newPosition = new Vector3(0, 0.2f, 0); // Default offset for other towers
+        }
+
+        tower = Instantiate(towerToBuild.prefab, transform.position + newPosition, Quaternion.identity);*/  // alt. code for repositioning the second spirte --> very unclean
+
+        Vector3 adjustedPosition = transform.position + towerToBuild.offset;
+
+        tower = Instantiate(towerToBuild.prefab, adjustedPosition, Quaternion.identity);
+
         if (EventSystem.current.IsPointerOverGameObject()) return;
     }
-
 
     // Update is called once per frame
     void Update()

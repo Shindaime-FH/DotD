@@ -18,12 +18,13 @@ public class Turret : MonoBehaviour
     private float timeUntilFire;
     private void OnDrawGizmosSelected()
     {
+        Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
 
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (target == null)
         {
