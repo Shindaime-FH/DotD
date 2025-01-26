@@ -5615,6 +5615,7 @@ GameObject:
   - component: {fileID: 617457368}
   - component: {fileID: 617457370}
   - component: {fileID: 617457371}
+  - component: {fileID: 617457372}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -5683,10 +5684,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 5341892214202579712, guid: 7e700ca933b443c45a2300ecee15bd32, type: 3}
+  - {fileID: 5341892214202579712, guid: 7e700ca933b443c45a2300ecee15bd32, type: 3}
+  - {fileID: 5341892214202579712, guid: dd9b96f627ee4794786738246d1ecbd9, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 0.5
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
+  enemiesPerSecondCap: 15
 --- !u!114 &617457371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5708,6 +5712,18 @@ MonoBehaviour:
     cost: 200
     prefab: {fileID: 6755526769245679414, guid: 43d088a79d6dc3a46807f5ebed240e01, type: 3}
     offset: {x: 0, y: 0, z: 0}
+--- !u!114 &617457372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617457367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19195c8595a68c743ae2a50c1554c0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,7 +5761,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000a7121ba5b3394a9ee94a1622
+  m_ApplyToSortingLayers: 00000000a7121ba5b3394a9ee94a16228bf5bb2e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

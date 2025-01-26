@@ -105,9 +105,13 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  upgradeUI: {fileID: 0}
+  upgradeButton: {fileID: 0}
+  baseUpgradeCost: 200
   targetingRange: 2
   aps: 0.25
   freezeTime: 1
+  target: {fileID: 0}
 --- !u!1 &7535372230618063056
 GameObject:
   m_ObjectHideFlags: 0

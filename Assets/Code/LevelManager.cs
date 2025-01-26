@@ -36,11 +36,5 @@ public class LevelManager : MonoBehaviour
             Debug.Log("You do not have enough to purchase this item");
             return false;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

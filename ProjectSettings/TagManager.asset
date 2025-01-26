@@ -47,5 +47,8 @@ TagManager:
   - name: Jewel
     uniqueID: 571886313
     locked: 0
+  - name: UI
+    uniqueID: 784070027
+    locked: 0
   m_RenderingLayers:
   - Default

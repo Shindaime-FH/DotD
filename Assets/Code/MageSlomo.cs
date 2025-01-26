@@ -1,23 +1,37 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class MageSlomo : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private GameObject upgradeUI;
+    [SerializeField] private Button upgradeButton;
+    [SerializeField] private int baseUpgradeCost = 200;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float aps = 4f;    // attacks per second
     [SerializeField] private float freezeTime = 1f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
+    private float apsBase;
+    private float targetingRangeBase;
+
+    public Transform target;
     private float timeUntilFire;
+    private int level = 1;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        apsBase = aps;
+        targetingRangeBase = targetingRange;
+
+        upgradeButton.onClick.AddListener(Upgrade);     //So it will close the UI
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -28,6 +42,47 @@ public class MageSlomo : MonoBehaviour
             FreezeEnemies();
             timeUntilFire = 0f;
         }
+    }
+
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+        UIManager.main.SetHoveringState(false);     // to prevent the bug where you can't open up the UI anymore after opening it up once
+    }
+
+    public void Upgrade()
+    {
+        if (CalculateCost() > LevelManager.main.currency) return;
+
+        LevelManager.main.SpendCurrency(CalculateCost());
+
+        level++;
+
+        aps = CalculateAPS();
+        targetingRange = CalculateRange();
+
+        CloseUpgradeUI();
+        Debug.Log("New APS: " + aps);
+        Debug.Log("New APS: " + targetingRange);
+        Debug.Log("New Cost: " + CalculateCost());
+    }
+    private int CalculateCost()
+    {
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));      // Cost get more expensive after upgrade
+    }
+
+    private float CalculateAPS()
+    {
+        return apsBase * Mathf.Pow(level, 0.4f);
+    }
+
+    private float CalculateRange()
+    {
+        return targetingRangeBase * Mathf.Pow(level, 0.2f);
     }
     private void FreezeEnemies()
     {

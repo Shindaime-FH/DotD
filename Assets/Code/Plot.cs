@@ -33,6 +33,7 @@ public class Plot : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (UIManager.main.IsHoveringUI()) return;      // Hovering over the UI and not the actual tower, when the UI is around we don't want to click the tower
         if (towerObj != null)
         {
             turret.OpenUpgradeUI();
@@ -71,11 +72,5 @@ public class Plot : MonoBehaviour
         turret = towerObj.GetComponent<Turret>();
 
         if (EventSystem.current.IsPointerOverGameObject()) return;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
