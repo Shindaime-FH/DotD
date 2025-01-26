@@ -3506,6 +3506,7 @@ GameObject:
   - component: {fileID: 420711560}
   - component: {fileID: 420711562}
   - component: {fileID: 420711561}
+  - component: {fileID: 420711562}
   m_Layer: 0
   m_Name: Plots
   m_TagString: Untagged
@@ -5101,12 +5102,15 @@ MonoBehaviour:
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
   enemiesPerSecondCap: 15
+<<<<<<< Updated upstream
   currentWave: 1
   timeSinceLastSpawn: 0
   enemiesAlive: 0
   enemiesLeftToSpawn: 0
   eps: 0
   isSpawning: 0
+=======
+>>>>>>> Stashed changes
 --- !u!114 &617457371
 MonoBehaviour:
   m_ObjectHideFlags: 0
