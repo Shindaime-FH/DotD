@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Turret : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Turret : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject stonePrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private GameObject upgradeUI;
+    [SerializeField] private Button upgradeButton;
+
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -21,8 +25,14 @@ public class Turret : MonoBehaviour
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
-
-
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+    }
     // Update is called once per frame
     private void Update()
     {
