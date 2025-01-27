@@ -44,11 +44,11 @@ public class MageSlomo : MonoBehaviour
         }
     }
 
-    public void OpenUpgradeUI()
+    public void OpenUpgradeUIMage()
     {
         upgradeUI.SetActive(true);
     }
-    public void CloseUpgradeUI()
+    public void CloseUpgradeUIMage()
     {
         upgradeUI.SetActive(false);
         UIManager.main.SetHoveringState(false);     // to prevent the bug where you can't open up the UI anymore after opening it up once
@@ -56,21 +56,21 @@ public class MageSlomo : MonoBehaviour
 
     public void Upgrade()
     {
-        if (CalculateCost() > LevelManager.main.currency) return;
+        if (CalculateCostMage() > LevelManager.main.currency) return;
 
-        LevelManager.main.SpendCurrency(CalculateCost());
+        LevelManager.main.SpendCurrency(CalculateCostMage());
 
         level++;
 
         aps = CalculateAPS();
         targetingRange = CalculateRange();
 
-        CloseUpgradeUI();
+        CloseUpgradeUIMage();
         Debug.Log("New APS: " + aps);
         Debug.Log("New APS: " + targetingRange);
-        Debug.Log("New Cost: " + CalculateCost());
+        Debug.Log("New Cost: " + CalculateCostMage());
     }
-    private int CalculateCost()
+    private int CalculateCostMage()
     {
         return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));      // Cost get more expensive after upgrade
     }

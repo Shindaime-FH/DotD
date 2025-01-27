@@ -4,9 +4,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager main;
 
-    private bool isHoveringUI;
+    public bool isHoveringUI;
 
-    private void Awake()
+    public void Awake()
     {
         main = this;
     }

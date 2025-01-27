@@ -142,6 +142,7 @@ MonoBehaviour:
   firingPoint: {fileID: 4320771181856898767}
   upgradeUI: {fileID: 7711703615830571384}
   upgradeButton: {fileID: 3822477845845806259}
+  baseUpgradeCost: 100
   targetingRange: 4
   rotationSpeed: 200
   bps: 1
@@ -626,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609fcfb3199eb86429b9f7bc580135a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouse_over: 0
 --- !u!1 &7990185056844580095
 GameObject:
   m_ObjectHideFlags: 0

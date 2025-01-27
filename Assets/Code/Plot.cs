@@ -12,6 +12,8 @@ public class Plot : MonoBehaviour
     [SerializeField] private Color hoverColor;
 
     private GameObject towerObj;
+    private GameObject mageTowerObj;
+    public MageSlomo mageTurret;
     public Turret turret;
     private Color startColor;
 
@@ -34,9 +36,14 @@ public class Plot : MonoBehaviour
     private void OnMouseDown()
     {
         if (UIManager.main.IsHoveringUI()) return;      // Hovering over the UI and not the actual tower, when the UI is around we don't want to click the tower
-        if (towerObj != null)
+        if (towerObj != null && turret != null)
         {
             turret.OpenUpgradeUI();
+            return;
+        }
+        else if (mageTowerObj != null && mageTurret != null)
+        {
+            mageTurret.OpenUpgradeUIMage();
             return;
         }
 
@@ -70,6 +77,8 @@ public class Plot : MonoBehaviour
 
         towerObj = Instantiate(towerToBuild.prefab, adjustedPosition, Quaternion.identity);
         turret = towerObj.GetComponent<Turret>();
+        mageTowerObj = Instantiate(towerToBuild.prefab, adjustedPosition, Quaternion.identity);
+        mageTurret = mageTowerObj.GetComponent<MageSlomo>();
 
         if (EventSystem.current.IsPointerOverGameObject()) return;
     }

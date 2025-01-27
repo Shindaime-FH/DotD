@@ -7,7 +7,7 @@ public class UpgradeUIHandler : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        mouse_over = true;      // so the mous  e hovering over the Upgrade recognizes it
+        mouse_over = true;      // so the mouse hovering over the Upgrade recognizes it
         UIManager.main.SetHoveringState(true);
     }
     public void OnPointerExit(PointerEventData eventData)
