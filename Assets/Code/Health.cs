@@ -4,7 +4,7 @@ public class Health : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private int hitPoints = 2;
-    [SerializeField] private int currencyworth = 50;
+    [SerializeField] private int currencyworth = 10;
 
     private bool isDestroyed = false;
 

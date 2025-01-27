@@ -72,12 +72,12 @@ public class Turret : MonoBehaviour
 
     private float CalculateBPS()
     {
-        return bpsBase * Mathf.Pow(level, 0.6f);
+        return bpsBase * Mathf.Pow(level, 0.2f);
     }
     
     private float CalculateRange()
     {
-        return targetingRangeBase * Mathf.Pow(level, 0.4f);
+        return targetingRangeBase * Mathf.Pow(level, 0.15f);
     }
 
     // Update is called once per frame

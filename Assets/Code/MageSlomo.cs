@@ -77,12 +77,12 @@ public class MageSlomo : MonoBehaviour
 
     private float CalculateAPS()
     {
-        return apsBase * Mathf.Pow(level, 0.4f);
+        return apsBase * Mathf.Pow(level, 0.1f);
     }
 
     private float CalculateRange()
     {
-        return targetingRangeBase * Mathf.Pow(level, 0.2f);
+        return targetingRangeBase * Mathf.Pow(level, 0.15f);
     }
     private void FreezeEnemies()
     {

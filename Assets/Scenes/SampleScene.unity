@@ -9704,7 +9704,9 @@ MonoBehaviour:
   - {fileID: 5341892214202579712, guid: 7e700ca933b443c45a2300ecee15bd32, type: 3}
   - {fileID: 5341892214202579712, guid: 7e700ca933b443c45a2300ecee15bd32, type: 3}
   - {fileID: 5341892214202579712, guid: dd9b96f627ee4794786738246d1ecbd9, type: 3}
-  baseEnemies: 8
+  - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
+  - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
+  baseEnemies: 16
   enemiesPerSecond: 0.5
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
