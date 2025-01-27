@@ -4,13 +4,14 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;     // Reference to Animator
+    [SerializeField] private SpriteRenderer spriteRenderer;     // Reference to Sprite Renderer
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
 
     private Transform target;
     private int pathIndex = 0;
-
     private float baseSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +43,43 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
+
+        UpdateAnimationAndSprite(direction);        // Update animation and sprite flipping based on direction
+    }
+
+    private void UpdateAnimationAndSprite(Vector2 direction)
+    {
+        //  Horizontal movement: Flip the sprite based on movement to the right/left
+        if (direction.x > 0)    //moving right
+        {
+            spriteRenderer.flipX = true;        // flip sprite horizontally
+            animator.Play("Zombie_WalkDiagonalLeft");
+            animator.Play("Knight_Sword_WalkDiagonalLeft");       // Use the diagonal left animation flipped for diagnoal right
+            animator.Play("GoblinRider_WalkDiagonalLeft");
+        }
+        else if (direction.x < 0)       // moving left
+        {
+            spriteRenderer.flipX = false;        // Ensuring the sprite doesn't flip
+            animator.Play("Zombie_WalkDiagonalLeft");
+            animator.Play("Knight_Sword_WalkDiagonalLeft");
+            animator.Play("GoblinRider_WalkDiagonalLeft");
+        }
+        else if (direction.y > 0)        // moving up
+        {
+            spriteRenderer.flipX = false;       // Ensure its not flipped
+            animator.Play("Zombie_WalkUp");
+            animator.Play("Knight_Sword_WalkUp");
+            animator.Play("GoblinRider_WalkUp");
+        }
+        else if (direction.y < 0)       // moving down
+        {
+            spriteRenderer.flipX = false; // Ensure its not flipped
+            animator.Play("Zombie_WalkDown");
+            animator.Play("Knight_Sword_WalkDown");
+            animator.Play("GoblinRider_WalkDown");
+        }
+
+
     }
     public void UpdateSpeed(float newSpeed)
     {
