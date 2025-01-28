@@ -170,7 +170,7 @@ MonoBehaviour:
   rb: {fileID: 3847344493092181571}
   animator: {fileID: 3207443707557190416}
   spriteRenderer: {fileID: 7596043041832736496}
-  moveSpeed: 10
+  moveSpeed: 4
   lastDirection: {x: 0, y: 0}
 --- !u!114 &2144163836027050467
 MonoBehaviour:
@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 2
   currencyworth: 5
+  coinPrefab: {fileID: 2489070444124667776, guid: d7fc9b7c5e4fdef4ea60fceddf9663cc, type: 3}
 --- !u!95 &3207443707557190416
 Animator:
   serializedVersion: 7
