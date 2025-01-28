@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
-    
+    [SerializeField] private HealthManager healthManager;
+
     [Header("Attributes")]
     [SerializeField] private int baseEnemies = 16;
     [SerializeField] private float enemiesPerSecond = 0.5f;
@@ -29,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
+        Debug.Log("Ooof someone died");
     }
 
     private void Start()
@@ -59,6 +61,11 @@ public class EnemySpawner : MonoBehaviour
     private void EnemyDestroyed()
     {
         enemiesAlive--;
+
+        if (healthManager != null)
+        {
+            healthManager.TakeDamage(10f); // Beispiel: 10 Schaden pro Gegner
+        }
     }
 
     private void SpawnEnemy()
