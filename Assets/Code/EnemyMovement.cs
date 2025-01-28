@@ -14,6 +14,9 @@ public class EnemyMovement : MonoBehaviour
     private int pathIndex = 0;
     private float baseSpeed;
 
+    public Vector2 lastDirection;
+    private bool isMovementDisabled = false;        // Flag to disable movement
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -50,6 +53,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateAnimationAndSprite(Vector2 direction)
     {
+        lastDirection = direction;      // Store the direction for death animation
+
         //  Horizontal movement: Flip the sprite based on movement to the right/left
         if (direction.x > 0)    //moving right
         {
@@ -79,8 +84,11 @@ public class EnemyMovement : MonoBehaviour
             animator.Play("Knight_Sword_WalkDown");
             animator.Play("GoblinRider_WalkDown");
         }
-
-
+    }
+    public void DisableMovement()
+    {
+        isMovementDisabled = true;      // Set the flag to disable movement
+        rb.linearVelocity = Vector2.zero;       // stop the Rigidbody's velocity
     }
     public void UpdateSpeed(float newSpeed)
     {

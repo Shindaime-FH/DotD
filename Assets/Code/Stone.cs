@@ -28,7 +28,7 @@ public class Stone : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        other.gameObject.GetComponent<Health>().takeDamage(stoneDamage);
+        other.gameObject.GetComponent<Health>().TakeDamage(stoneDamage);
         Destroy(gameObject);
     }
 }
