@@ -135,6 +135,7 @@ MonoBehaviour:
   animator: {fileID: 598693444644846953}
   spriteRenderer: {fileID: 7596043041832736496}
   moveSpeed: 2
+  lastDirection: {x: 0, y: 0}
 --- !u!114 &2144163836027050467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 4
   currencyworth: 10
+  animator: {fileID: 598693444644846953}
+  enemyMovement: {fileID: 8385578450715196681}
+  spriteRenderer: {fileID: 7596043041832736496}
 --- !u!95 &598693444644846953
 Animator:
   serializedVersion: 7
