@@ -170,6 +170,7 @@ MonoBehaviour:
   rb: {fileID: 3847344493092181571}
   animator: {fileID: 3207443707557190416}
   spriteRenderer: {fileID: 7596043041832736496}
+  healthManager: {fileID: 0}
   moveSpeed: 10
   lastDirection: {x: 0, y: 0}
 --- !u!114 &2144163836027050467
