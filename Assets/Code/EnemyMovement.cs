@@ -53,7 +53,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateAnimationAndSprite(Vector2 direction)
     {
-        lastDirection = direction;      // Store the direction for death animation
 
         //  Horizontal movement: Flip the sprite based on movement to the right/left
         if (direction.x > 0)    //moving right

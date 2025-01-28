@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8385578450715196681}
   - component: {fileID: 2144163836027050467}
   - component: {fileID: 628088809204165110}
-  - component: {fileID: 4373564459973605985}
+  - component: {fileID: 2121015151429717192}
   m_Layer: 6
   m_Name: Zombie
   m_TagString: Untagged
@@ -150,9 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 8
   currencyworth: 25
-  animator: {fileID: 628088809204165110}
-  enemyMovement: {fileID: 8385578450715196681}
-  spriteRenderer: {fileID: 7596043041832736496}
 --- !u!95 &628088809204165110
 Animator:
   serializedVersion: 7
@@ -175,8 +172,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &4373564459973605985
-PolygonCollider2D:
+--- !u!58 &2121015151429717192
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -209,23 +206,5 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.18, y: 0.27}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.04, y: 0.13499999}
-      - {x: -0.04, y: 0.13499999}
-      - {x: -0.089999996, y: 0.074999996}
-      - {x: -0.089999996, y: -0.13499999}
-      - {x: 0.08, y: -0.13499999}
-      - {x: 0.089999996, y: -0.105}
-      - {x: 0.089999996, y: 0.085}
-  m_UseDelaunayMesh: 0
+  m_Offset: {x: 0, y: -0.005411466}
+  m_Radius: 0.07134882
