@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesPerSecondCap = 15f;
+    //[SerializeField] public bool isDestroyedByTurret = false; -idea of selection 
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
