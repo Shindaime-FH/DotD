@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;     // Reference to Animator
     [SerializeField] private SpriteRenderer spriteRenderer;     // Reference to Sprite Renderer
+    [SerializeField] private HealthManager healthManager;
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
@@ -20,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        healthManager = Object.FindFirstObjectByType<HealthManager>();
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
     }
@@ -33,6 +35,10 @@ public class EnemyMovement : MonoBehaviour
 
             if (pathIndex == LevelManager.main.path.Length)
             {
+                if (healthManager != null)
+                {
+                    healthManager.TakeDamage(10f); // 10 damage for each surviving enemy 
+                }
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;

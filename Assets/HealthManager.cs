@@ -3,8 +3,12 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
+    [Header("Game Over Settings")]
+    [SerializeField] private GameObject gameOverUI; // UI für Game Over
+    private bool isGameOver = false;
+
     public Image healthBar;
-    public float healthAmount = 100f;
+    [SerializeField] public float healthAmount = 100f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,8 +40,16 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthAmount -= damage;
+        healthAmount = Mathf.Clamp(healthAmount, 0, 100f); // to make sure its not going under 0
         healthBar.fillAmount = healthAmount / 100f;
         Debug.Log("We took damage");
+
+        // check if life is under 0
+        if (healthAmount <= 0 && !isGameOver)
+        {
+            TriggerGameOver();
+        }
+
     }
 
     public void Heal(float healingAmount)
@@ -46,5 +58,21 @@ public class HealthManager : MonoBehaviour
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
 
         healthBar.fillAmount = healthAmount / 100f;
+    }
+
+    private void TriggerGameOver()
+    {
+        isGameOver = true;
+
+        // show UI
+        if (gameOverUI != null)
+        {
+            gameOverUI.SetActive(true); // activate UI
+        }
+
+        // pause game
+        Time.timeScale = 0f;
+
+        Debug.Log("Game Over!");
     }
 }
