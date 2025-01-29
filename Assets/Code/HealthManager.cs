@@ -59,8 +59,33 @@ public class HealthManager : MonoBehaviour
 
         healthBar.fillAmount = healthAmount / 100f;
     }
-
     private void TriggerGameOver()
+    {
+        isGameOver = true;
+
+        // Show the Game Over UI
+        if (gameOverUI != null)
+        {
+            gameOverUI.SetActive(true); // Activate Game Over UI
+
+            // Ensure the "Game Over" Text renders above other children
+            Transform panelTransform = gameOverUI.transform.Find("Panel");
+            if (panelTransform != null)
+            {
+                Transform gameOverText = panelTransform.Find("Text (TMP)"); // Find the Text object
+                if (gameOverText != null)
+                {
+                    gameOverText.SetAsLastSibling(); // Ensure it renders above the image
+                }
+            }
+        }
+
+        // Pause game
+        Time.timeScale = 0f;
+
+        Debug.Log("Game Over!");
+    }
+    /*private void TriggerGameOver()
     {
         isGameOver = true;
 
@@ -74,5 +99,5 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 0f;
 
         Debug.Log("Game Over!");
-    }
+    }*/
 }
