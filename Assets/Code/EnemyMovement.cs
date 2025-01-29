@@ -57,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
         UpdateAnimationAndSprite(direction);        // Update animation and sprite flipping based on direction
     }
 
-    private void UpdateAnimationAndSprite(Vector2 direction)
+    /*private void UpdateAnimationAndSprite(Vector2 direction)
     {
 
         //  Horizontal movement: Flip the sprite based on movement to the right/left
@@ -88,6 +88,45 @@ public class EnemyMovement : MonoBehaviour
             animator.Play("Zombie_WalkDown");
             animator.Play("Knight_Sword_WalkDown");
             animator.Play("GoblinRider_WalkDown");
+        }
+    }*/
+    private void UpdateAnimationAndSprite(Vector2 direction)
+    {
+        // Prioritize vertical movement if it’s stronger
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
+        {
+            if (direction.y > 0)        // Moving up
+            {
+                spriteRenderer.flipX = false;  // Ensure it's not flipped
+                animator.Play("Zombie_WalkUp");
+                animator.Play("Knight_Sword_WalkUp");
+                animator.Play("GoblinRider_WalkUp");
+            }
+            else if (direction.y < 0)   // Moving down
+            {
+                spriteRenderer.flipX = false; // Ensure it's not flipped
+                animator.Play("Zombie_WalkDown");
+                animator.Play("Knight_Sword_WalkDown");
+                animator.Play("GoblinRider_WalkDown");
+            }
+        }
+        else
+        {
+            // Horizontal movement: Flip sprite accordingly
+            if (direction.x > 0)    // Moving right
+            {
+                spriteRenderer.flipX = true;  // Flip sprite horizontally
+                animator.Play("Zombie_WalkDiagonalLeft");
+                animator.Play("Knight_Sword_WalkDiagonalLeft"); // Use diagonal left but flipped
+                animator.Play("GoblinRider_WalkDiagonalLeft");
+            }
+            else if (direction.x < 0)   // Moving left
+            {
+                spriteRenderer.flipX = false;  // Ensure it's not flipped
+                animator.Play("Zombie_WalkDiagonalLeft");
+                animator.Play("Knight_Sword_WalkDiagonalLeft");
+                animator.Play("GoblinRider_WalkDiagonalLeft");
+            }
         }
     }
     public void DisableMovement()

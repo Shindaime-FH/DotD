@@ -15981,7 +15981,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -47, y: -7}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007024618
 MonoBehaviour:
@@ -32168,12 +32168,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3686028516166494021, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686028516166494021, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686028516166494021, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3686028516166494021, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -194
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 3726445481771145008, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
       propertyPath: m_Name
@@ -32182,6 +32190,18 @@ PrefabInstance:
     - target: {fileID: 3726445481771145008, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715495240912795715, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715495240912795715, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642046301448942384, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8434752211764491462, guid: 61033b834042a8b43a5c3d8cb0f34b18, type: 3}
       propertyPath: m_Pivot.x
