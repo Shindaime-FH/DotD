@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 8
   currencyworth: 25
+  coinPrefab: {fileID: 2489070444124667776, guid: d7fc9b7c5e4fdef4ea60fceddf9663cc, type: 3}
 --- !u!95 &628088809204165110
 Animator:
   serializedVersion: 7
