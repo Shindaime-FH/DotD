@@ -4,11 +4,8 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
-    [SerializeField] private HealthManager healthManager;
 
     [Header("Attributes")]
     [SerializeField] private int baseEnemies = 16;
@@ -16,7 +13,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesPerSecondCap = 15f;
-    //[SerializeField] public bool isDestroyedByTurret = false; -idea of selection 
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
@@ -62,11 +58,6 @@ public class EnemySpawner : MonoBehaviour
     private void EnemyDestroyed()
     {
         enemiesAlive--;
-
-        if (healthManager != null)
-        {
-            healthManager.TakeDamage(10f); // Beispiel: 10 Schaden pro Gegner
-        }
     }
 
     private void SpawnEnemy()
