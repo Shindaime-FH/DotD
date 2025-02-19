@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      coins-16-blackout_09_0: 3418566169554558282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

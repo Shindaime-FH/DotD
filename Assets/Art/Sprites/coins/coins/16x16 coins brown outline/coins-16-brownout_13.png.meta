@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      coins-16-brownout_13_0: -642736766707883844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

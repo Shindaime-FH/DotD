@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      coins-16-greyout_02_0: -4839147174179575831
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

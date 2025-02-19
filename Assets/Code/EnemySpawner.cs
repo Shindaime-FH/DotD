@@ -95,5 +95,10 @@ public class EnemySpawner : MonoBehaviour
     {
         return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesPerSecondCap);
     }
-
+    public void StopAllSpawning()
+    {
+        StopAllCoroutines(); // Stop current wave and delays
+        isSpawning = false;  // Prevent new spawns
+        enemiesLeftToSpawn = 0; // Clear remaining enemies
+    }
 }
