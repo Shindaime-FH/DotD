@@ -5,47 +5,64 @@ public class GateHealth : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float repairRate = 5f; // Health regenerated per second
-
+    // repairRate is now defined per level in the scene via the inspector
+    public float repairRate = 0.5f;
+    
     [Header("Sprites")]
     [SerializeField] private Sprite brokenSprite;
     [SerializeField] private Sprite midRepairedSprite;
     [SerializeField] private Sprite fullyRepairedSprite;
-
+    
     [Header("UI")]
-    [SerializeField] private Image healthBar; // Assign a smaller UI Image for the gate
-
+    [SerializeField] private Image healthBar;
+    
     private SpriteRenderer spriteRenderer;
     private float currentHealth;
-    private bool isFullyRepaired;
-
+    private bool isFullyRepaired = false;
+    
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        // Start at 0 so that if no enemy damage occurs, repair will eventually complete the level.
         currentHealth = 0f;
         UpdateHealthUI();
         UpdateGateSprite();
     }
-
+    
     private void Update()
     {
         if (!isFullyRepaired)
         {
-            // Gradually repair the gate
+            // Gradually repair the gate.
             currentHealth += repairRate * Time.deltaTime;
             currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
-
             UpdateHealthUI();
             UpdateGateSprite();
-
-            // Check if fully repaired
             if (currentHealth >= maxHealth)
             {
                 FullyRepairGate();
             }
         }
+        
+        // If the gate is broken, trigger a failure.
+        if (currentHealth <= 0f)
+        {
+            GameManager.Instance.FailLevel();
+        }
     }
-
+    
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        UpdateHealthUI();
+        UpdateGateSprite();
+        if (currentHealth <= 0f)
+        {
+            GameManager.Instance.FailLevel();
+        }
+    }
+    
     private void UpdateHealthUI()
     {
         if (healthBar != null)
@@ -53,11 +70,12 @@ public class GateHealth : MonoBehaviour
             healthBar.fillAmount = currentHealth / maxHealth;
         }
     }
-
+    
     private void UpdateGateSprite()
     {
+        if (spriteRenderer == null) return;
+        
         float healthPercent = currentHealth / maxHealth;
-
         if (healthPercent >= 0.90f)
         {
             spriteRenderer.sprite = fullyRepairedSprite;
@@ -71,16 +89,11 @@ public class GateHealth : MonoBehaviour
             spriteRenderer.sprite = brokenSprite;
         }
     }
-
+    
     private void FullyRepairGate()
     {
         isFullyRepaired = true;
-
-        // Stop enemy spawning
-        EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
-        if (spawner != null)
-        {
-            spawner.StopAllSpawning(); // You'll add this method next
-        }
+        // Level successfully completed.
+        GameManager.Instance.CompleteLevel();
     }
 }

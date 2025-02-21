@@ -8,12 +8,12 @@ public class CurrencyPickup : MonoBehaviour
 
     private void Start()
     {
-        // Attempt to find UI if not set in inspector
+        // Attempt to find UI if not set in inspector.
         if (currencyUI == null)
         {
             currencyUI = GameObject.Find("Currency")?.GetComponent<TextMeshProUGUI>();
 
-            // Log error if still not found
+            // Log error if still not found.
             if (currencyUI == null)
             {
                 Debug.LogError("Currency UI TextMeshProUGUI not found!");
@@ -28,11 +28,7 @@ public class CurrencyPickup : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Update LevelManager's currency
-        LevelManager.main.IncreaseCurrency(currencyWorth);
-        Destroy(gameObject); // Remove the coin after collection
-
-        // Optional: Update UI directly if needed (not necessary if Menu's OnGUI is working)
-        // currencyUI.text = LevelManager.main.currency.ToString();
+        GameManager.Instance.playerCurrency += currencyWorth;
+        Destroy(gameObject);
     }
 }

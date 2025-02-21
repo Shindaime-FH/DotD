@@ -4,140 +4,164 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator animator;     // Reference to Animator
-    [SerializeField] private SpriteRenderer spriteRenderer;     // Reference to Sprite Renderer
-    [SerializeField] private HealthManager healthManager;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
-
+    private Transform[] currentPath;
     private Transform target;
     private int pathIndex = 0;
     private float baseSpeed;
 
-    public Vector2 lastDirection;
-    private bool isMovementDisabled = false;        // Flag to disable movement
+    // Level flags (set via SetLevelFlags)
+    public bool isFirstLevel = false;
+    public bool isSecondLevel = false;
+    public bool isThirdLevel = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    private void OnEnable()
     {
-        healthManager = Object.FindFirstObjectByType<HealthManager>();
-        baseSpeed = moveSpeed;
-        target = LevelManager.main.path[pathIndex];
+        if (GameManager.Instance != null)
+        {
+            SetLevelFlags(GameManager.Instance.currentLevel);
+        }
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        if (GameManager.Instance != null)
+        {
+            SetLevelFlags(GameManager.Instance.currentLevel);
+        }
+        baseSpeed = moveSpeed;
+    }
+
+    // Update level flags and assign the proper path from LevelManager.
+    public void SetLevelFlags(int level)
+    {
+        isFirstLevel = (level == 1);
+        isSecondLevel = (level == 2);
+        isThirdLevel = (level == 3);
+
+        // Assign the correct path based on level.
+        if (isThirdLevel)
+        {
+            int randomChoice = Random.Range(0, 4);
+            switch (randomChoice)
+            {
+                case 0:
+                    currentPath = LevelManager.main.Pathsthirdlvlmain;
+                    break;
+                case 1:
+                    currentPath = LevelManager.main.PathsthirdlvlmainVar;
+                    break;
+                case 2:
+                    currentPath = LevelManager.main.Paththirdlvlalt;
+                    break;
+                case 3:
+                    currentPath = LevelManager.main.PaththirdlvlaltVar;
+                    break;
+            }
+        }
+        else if (isSecondLevel)
+        {
+            int randomChoice = Random.Range(0, 2);
+            currentPath = (randomChoice == 0) ? LevelManager.main.Pathscndlvlmain : LevelManager.main.Pathscndlvlalt;
+        }
+        else // Level 1
+        {
+            currentPath = LevelManager.main.path;
+        }
+
+        if (currentPath == null || currentPath.Length == 0)
+        {
+            Debug.LogWarning("EnemyMovement: No path found! Ensure LevelManager.main.path is assigned in Level 1.");
+            return;
+        }
+
+        target = currentPath[0];
+        pathIndex = 0;
+    }
+
     private void Update()
     {
+        if (currentPath == null || currentPath.Length == 0)
+            return;
+
         if (Vector2.Distance(target.position, transform.position) <= 0.1f)
         {
             pathIndex++;
-
-            if (pathIndex == LevelManager.main.path.Length)
+            if (pathIndex >= currentPath.Length)
             {
-                if (healthManager != null)
+                // On level 1, damage the castle via HealthManager; otherwise damage the gate.
+                if (isFirstLevel)
                 {
-                    healthManager.TakeDamage(10f); // 10 damage for each surviving enemy 
+                    HealthManager hm = Object.FindObjectOfType<HealthManager>();
+                    if (hm != null)
+                    {
+                        hm.TakeDamage(10f);
+                    }
                 }
-                EnemySpawner.onEnemyDestroy.Invoke();
+                else
+                {
+                    DestructibleGate gate = Object.FindObjectOfType<DestructibleGate>();
+                    if (gate != null)
+                    {
+                        gate.TakeDamage(10f);
+                    }
+                }
                 Destroy(gameObject);
                 return;
             }
             else
             {
-                target = LevelManager.main.path[pathIndex];
+                target = currentPath[pathIndex];
             }
         }
     }
+
     private void FixedUpdate()
     {
+        if (currentPath == null || currentPath.Length == 0)
+            return;
+
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
-
-        UpdateAnimationAndSprite(direction);        // Update animation and sprite flipping based on direction
+        UpdateAnimationAndSprite(direction);
     }
 
-    /*private void UpdateAnimationAndSprite(Vector2 direction)
-    {
-
-        //  Horizontal movement: Flip the sprite based on movement to the right/left
-        if (direction.x > 0)    //moving right
-        {
-            spriteRenderer.flipX = true;        // flip sprite horizontally
-            animator.Play("Zombie_WalkDiagonalLeft");
-            animator.Play("Knight_Sword_WalkDiagonalLeft");       // Use the diagonal left animation flipped for diagnoal right
-            animator.Play("GoblinRider_WalkDiagonalLeft");
-        }
-        else if (direction.x < 0)       // moving left
-        {
-            spriteRenderer.flipX = false;        // Ensuring the sprite doesn't flip
-            animator.Play("Zombie_WalkDiagonalLeft");
-            animator.Play("Knight_Sword_WalkDiagonalLeft");
-            animator.Play("GoblinRider_WalkDiagonalLeft");
-        }
-        else if (direction.y > 0)        // moving up
-        {
-            spriteRenderer.flipX = false;       // Ensure its not flipped
-            animator.Play("Zombie_WalkUp");
-            animator.Play("Knight_Sword_WalkUp");
-            animator.Play("GoblinRider_WalkUp");
-        }
-        else if (direction.y < 0)       // moving down
-        {
-            spriteRenderer.flipX = false; // Ensure its not flipped
-            animator.Play("Zombie_WalkDown");
-            animator.Play("Knight_Sword_WalkDown");
-            animator.Play("GoblinRider_WalkDown");
-        }
-    }*/
     private void UpdateAnimationAndSprite(Vector2 direction)
     {
-        // Prioritize vertical movement if it’s stronger
-        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
+        if (animator == null)
+            return;
+
+        if (direction.x > 0)
         {
-            if (direction.y > 0)        // Moving up
-            {
-                spriteRenderer.flipX = false;  // Ensure it's not flipped
-                animator.Play("Zombie_WalkUp");
-                animator.Play("Knight_Sword_WalkUp");
-                animator.Play("GoblinRider_WalkUp");
-            }
-            else if (direction.y < 0)   // Moving down
-            {
-                spriteRenderer.flipX = false; // Ensure it's not flipped
-                animator.Play("Zombie_WalkDown");
-                animator.Play("Knight_Sword_WalkDown");
-                animator.Play("GoblinRider_WalkDown");
-            }
+            spriteRenderer.flipX = true;
+            animator.Play("Zombie_WalkDiagonalLeft");
         }
-        else
+        else if (direction.x < 0)
         {
-            // Horizontal movement: Flip sprite accordingly
-            if (direction.x > 0)    // Moving right
-            {
-                spriteRenderer.flipX = true;  // Flip sprite horizontally
-                animator.Play("Zombie_WalkDiagonalLeft");
-                animator.Play("Knight_Sword_WalkDiagonalLeft"); // Use diagonal left but flipped
-                animator.Play("GoblinRider_WalkDiagonalLeft");
-            }
-            else if (direction.x < 0)   // Moving left
-            {
-                spriteRenderer.flipX = false;  // Ensure it's not flipped
-                animator.Play("Zombie_WalkDiagonalLeft");
-                animator.Play("Knight_Sword_WalkDiagonalLeft");
-                animator.Play("GoblinRider_WalkDiagonalLeft");
-            }
+            spriteRenderer.flipX = false;
+            animator.Play("Zombie_WalkDiagonalLeft");
+        }
+        else if (direction.y > 0)
+        {
+            spriteRenderer.flipX = false;
+            animator.Play("Zombie_WalkUp");
+        }
+        else if (direction.y < 0)
+        {
+            spriteRenderer.flipX = false;
+            animator.Play("Zombie_WalkDown");
         }
     }
-    public void DisableMovement()
-    {
-        isMovementDisabled = true;      // Set the flag to disable movement
-        rb.linearVelocity = Vector2.zero;       // stop the Rigidbody's velocity
-    }
+
     public void UpdateSpeed(float newSpeed)
     {
         moveSpeed = newSpeed;
     }
+
     public void ResetSpeed()
     {
         moveSpeed = baseSpeed;

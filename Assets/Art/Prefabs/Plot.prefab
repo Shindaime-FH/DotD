@@ -149,4 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 2085308339646057998}
   hoverColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  mageTurret: {fileID: 0}
   turret: {fileID: 0}

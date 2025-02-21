@@ -1,23 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Plot : MonoBehaviour
 {
-
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
 
+    // We now only keep one tower reference.
     private GameObject towerObj;
-    private GameObject mageTowerObj;
-    public MageSlomo mageTurret;
-    public Turret turret;
     private Color startColor;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         startColor = sr.color;
@@ -35,51 +28,54 @@ public class Plot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (UIManager.main.IsHoveringUI()) return;      // Hovering over the UI and not the actual tower, when the UI is around we don't want to click the tower
-        if (towerObj != null && turret != null)
+        if (UIManager.main.IsHoveringUI()) return; // Don’t allow clicking through UI.
+
+        // If a tower is already here, open its upgrade UI.
+        if (towerObj != null)
         {
-            turret.OpenUpgradeUI();
-            return;
-        }
-        else if (mageTowerObj != null && mageTurret != null)
-        {
-            mageTurret.OpenUpgradeUIMage();
+            // Check which type of tower is here.
+            Turret turret = towerObj.GetComponent<Turret>();
+            if (turret != null)
+            {
+                turret.OpenUpgradeUI();
+            }
+            else
+            {
+                MageSlomo mageTurret = towerObj.GetComponent<MageSlomo>();
+                if (mageTurret != null)
+                {
+                    mageTurret.OpenUpgradeUIMage();
+                }
+            }
             return;
         }
 
+        // Get the tower to build.
         Tower towerToBuild = BuildManager.main.GetSelectedTower();
-        if (towerToBuild.cost > LevelManager.main.currency)
+        if (towerToBuild.cost > GameManager.Instance.playerCurrency)
         {
             Debug.Log("You can't afford this tower");
             return;
         }
-        
-        LevelManager.main.SpendCurrency(towerToBuild.cost);
 
-        /*Vector3 newPosition = new Vector3(0,0.2f,0); // correction of prefab position for y 
-        tower = Instantiate(towerToBuild.prefab, transform.position + newPosition, Quaternion.identity);*/    //old code
-
-        /* Vector3 newPosition;
-
-        // Check for the type of tower and apply specific position correction
-        if (towerToBuild.prefab.name == "Mage Turret") // Replace "MageTower" with the exact prefab name
-        {
-            newPosition = new Vector3(0, 0.3f, 0); // Adjust the Y offset for the mage tower
-        }
-        else
-        {
-            newPosition = new Vector3(0, 0.2f, 0); // Default offset for other towers
-        }
-
-        tower = Instantiate(towerToBuild.prefab, transform.position + newPosition, Quaternion.identity);*/  // alt. code for repositioning the second spirte --> very unclean
+        if (!GameManager.Instance.SpendCurrency(towerToBuild.cost))
+            return;
 
         Vector3 adjustedPosition = transform.position + towerToBuild.offset;
 
+        // Instantiate only one tower.
         towerObj = Instantiate(towerToBuild.prefab, adjustedPosition, Quaternion.identity);
-        turret = towerObj.GetComponent<Turret>();
-        mageTowerObj = Instantiate(towerToBuild.prefab, adjustedPosition, Quaternion.identity);
-        mageTurret = mageTowerObj.GetComponent<MageSlomo>();
 
+        if (towerObj.GetComponent<Turret>() != null)
+        {
+            // It’s a turret – nothing more needed.
+        }
+        else if (towerObj.GetComponent<MageSlomo>() != null)
+        {
+            // It’s a mage turret – nothing more needed.
+        }
+
+        // (Optional) Check if clicking on UI.
         if (EventSystem.current.IsPointerOverGameObject()) return;
     }
 }

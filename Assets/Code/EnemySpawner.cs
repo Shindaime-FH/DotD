@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+
+
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
 
@@ -27,7 +29,6 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
-        Debug.Log("Ooof someone died");
     }
 
     private void Start()
@@ -42,14 +43,15 @@ public class EnemySpawner : MonoBehaviour
 
         timeSinceLastSpawn += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0) {
+        if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
+        {
             SpawnEnemy();
             enemiesLeftToSpawn--;
             enemiesAlive++;
             timeSinceLastSpawn = 0f;
         }
 
-        if(enemiesAlive == 0 && enemiesLeftToSpawn == 0)
+        if (enemiesAlive == 0 && enemiesLeftToSpawn == 0)
         {
             EndWave();
         }
@@ -95,10 +97,12 @@ public class EnemySpawner : MonoBehaviour
     {
         return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesPerSecondCap);
     }
+
     public void StopAllSpawning()
     {
         StopAllCoroutines(); // Stop current wave and delays
         isSpawning = false;  // Prevent new spawns
         enemiesLeftToSpawn = 0; // Clear remaining enemies
     }
+
 }
