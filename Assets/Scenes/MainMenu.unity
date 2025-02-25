@@ -1873,7 +1873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
-  playerCurrency: 100
+  playerCurrency: 10000000
 --- !u!4 &1867768828
 Transform:
   m_ObjectHideFlags: 0
