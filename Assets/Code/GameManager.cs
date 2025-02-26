@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
     [Header("Persistent Data")]
     public int currentLevel = 1;
     public int playerCurrency = 100;
+
+    private float savedLevel1Health = -1f;
+    private float savedLevel2Health = -1f;
+    private float savedLevel3Health = -1f;
 
     private void Awake()
     {
@@ -39,6 +44,21 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        CollectAllCoins();
+
+        SaveCurrentLevelHealth();
+
+        int completedLevel = currentLevel;
+        switch (completedLevel)
+        {
+            case 1:
+                savedLevel2Health = -1f;
+                break;
+            case 2:
+                savedLevel3Health = -1f;
+                break;
+        }
+
         if (currentLevel < 3)
         {
             currentLevel++;
@@ -47,13 +67,25 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("All levels completed!");
-            // Optionally show a win screen.
+            CollectAllCoins();
+        }
+
+    }
+
+    public void CollectAllCoins()
+    {
+        CurrencyPickup[] coins = FindObjectsOfType<CurrencyPickup>();
+        foreach (CurrencyPickup coin in coins)
+        {
+            playerCurrency += coin.GetCurrencyWorth();
+            Destroy(coin.gameObject);
         }
     }
 
     public void FailLevel()
     {
-        // Clear any enemy objects to avoid carrying over old state.
+        SaveCurrentLevelHealth();
+
         foreach (EnemyMovement enemy in FindObjectsOfType<EnemyMovement>())
         {
             Destroy(enemy.gameObject);
@@ -66,21 +98,55 @@ public class GameManager : MonoBehaviour
         }
         else if (currentLevel == 2)
         {
-            // Clear defences before going back to level 1.
             BuildManager.main.ClearTowers();
             currentLevel = 1;
             SceneManager.LoadScene("Level1");
         }
         else if (currentLevel == 3)
         {
-            // On level 3 failure, go back to level 2 (keeping level 2 defences intact).
+            BuildManager.main.ClearTowers();
             currentLevel = 2;
             SceneManager.LoadScene("Level2");
         }
     }
 
+    private void SaveCurrentLevelHealth()
+    {
+        switch (currentLevel)
+        {
+            case 1:
+                HealthManager hm = FindObjectOfType<HealthManager>();
+                if (hm != null) savedLevel1Health = hm.healthAmount;
+                break;
+            case 2:
+            case 3:
+                DestructibleGate gate = FindObjectOfType<DestructibleGate>();
+                if (gate != null)
+                {
+                    if (currentLevel == 2) savedLevel2Health = gate.currentHealth;
+                    else savedLevel3Health = gate.currentHealth;
+                }
+                break;
+        }
+    }
+
+    public float GetSavedHealth(int level)
+    {
+        return level switch
+        {
+            1 => savedLevel1Health,
+            2 => savedLevel2Health,
+            3 => savedLevel3Health,
+            _ => -1f
+        };
+    }
+
     public void ReturnToMainMenu()
     {
+        savedLevel1Health = -1f;
+        savedLevel2Health = -1f;
+        savedLevel3Health = -1f;
+
         currentLevel = 1;
         SceneManager.LoadScene("MainMenu");
     }
@@ -97,5 +163,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("Not enough currency");
             return false;
         }
+    }
+
+    internal void ResetForNewGame()
+    {
+        throw new NotImplementedException();
     }
 }

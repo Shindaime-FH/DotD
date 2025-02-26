@@ -24,9 +24,10 @@ public class BuildManager : MonoBehaviour
     }
 
     // Call this when failing level 2 to clear defences.
+    [System.Obsolete]
     public void ClearTowers()
     {
-        Turret[] turrets = FindObjectsOfType<Turret>();
+        Turret[] turrets = Object.FindObjectsOfType<Turret>();
         foreach (Turret t in turrets)
         {
             Destroy(t.gameObject);

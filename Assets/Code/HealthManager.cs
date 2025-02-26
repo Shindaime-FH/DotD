@@ -10,13 +10,30 @@ public class HealthManager : MonoBehaviour
     public Image healthBar;
     [SerializeField] public float healthAmount = 100f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // Add null check for GameManager
+        if (GameManager.Instance != null)
+        {
+            float savedHealth = GameManager.Instance.GetSavedHealth(1);
+            healthAmount = savedHealth > 0 ? savedHealth : 100f;
+        }
+        else
+        {
+            healthAmount = 100f; // Default value
+        }
+
+        // Add null check for healthBar
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = healthAmount / 100f;
+        }
+        else
+        {
+            Debug.LogError("HealthBar reference missing in HealthManager!");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
        /* if(healthAmount <= 0)

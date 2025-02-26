@@ -93,7 +93,7 @@ public class GateHealth : MonoBehaviour
     private void FullyRepairGate()
     {
         isFullyRepaired = true;
-        // Level successfully completed.
+        GameManager.Instance.CollectAllCoins();
         GameManager.Instance.CompleteLevel();
     }
 }

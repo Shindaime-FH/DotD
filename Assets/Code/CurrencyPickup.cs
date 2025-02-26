@@ -5,6 +5,7 @@ public class CurrencyPickup : MonoBehaviour
 {
     private int currencyWorth;
     [SerializeField] private TextMeshProUGUI currencyUI;
+    public int GetCurrencyWorth() => currencyWorth;
 
     private void Start()
     {

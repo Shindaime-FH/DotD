@@ -6,7 +6,7 @@ public class DestructibleGate : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private float maxHealth = 100f;
-    private float currentHealth;
+    public float currentHealth;
 
     [Header("Sprites")]
     [SerializeField] private Sprite healthySprite;
@@ -20,7 +20,10 @@ public class DestructibleGate : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        int level = GameManager.Instance.currentLevel;
+        float savedHealth = GameManager.Instance.GetSavedHealth(level);
+        currentHealth = savedHealth > 0 ? savedHealth : maxHealth;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateHealthUI();
         UpdateSprite();
