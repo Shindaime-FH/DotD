@@ -465,14 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589b59f69e4142e48bdbd7a5bcfb3aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuMusicSource: {fileID: 0}
-  cutsceneMusicSource: {fileID: 0}
-  levelMusicSource: {fileID: 57508805}
-  audioMixer: {fileID: 0}
-  musicVolumeParam: MusicVolume
-  menuMusicBaseVolume: 0.8
-  cutsceneMusicBaseVolume: 0.9
-  levelMusicBaseVolume: 0.7
+  fadeDuration: 1
 --- !u!82 &57508805
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6894,7 +6887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.062745094, g: 1, b: 0.07179317, a: 1}
+  m_Color: {r: 0.19215687, g: 0.3372549, b: 0.18039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
