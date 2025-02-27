@@ -132,7 +132,41 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateAnimationAndSprite(Vector2 direction)
     {
-        if (animator == null)
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))        // Prioritize vertical movement if it's stronger
+        {
+            if (direction.y > 0)                                    // Moving up
+            {
+                spriteRenderer.flipX = false;                       // Ensure it's not flipped
+                animator.Play("Zombie_WalkUp");
+                animator.Play("Knight_Sword_WalkUp");
+                animator.Play("GoblinRider_WalkUp");
+            }
+            else if (direction.y < 0)                               // Moving down
+            {
+                spriteRenderer.flipX = false;                       // Ensure it's not flipped
+                animator.Play("Zombie_WalkDown");
+                animator.Play("Knight_Sword_WalkDown");
+                animator.Play("GoblinRider_WalkDown");
+            }
+        }
+        else
+        {                                                           // Horizontal movement: Flip sprite accordingly
+            if (direction.x > 0)                                    // Moving right
+            {
+                spriteRenderer.flipX = true;                        // Flip sprite horizontally
+                animator.Play("Zombie_WalkDiagonalLeft");
+                animator.Play("Knight_Sword_WalkDiagonalLeft");
+                animator.Play("GoblinRider_WalkDiagonalLeft");
+            }
+            else if (direction.x < 0)                               // Moving left
+            {
+                spriteRenderer.flipX= false;                       // Ensure it's not flipped
+                animator.Play("Zombie_WalkDiagonalLeft");
+                animator.Play("Knight_Sword_WalkDiagonalLeft");
+                animator.Play("GoblinRider_WalkDiagonalLeft");
+            }
+        }
+        /*if (animator == null)
             return;
 
         if (direction.x > 0)
@@ -154,7 +188,7 @@ public class EnemyMovement : MonoBehaviour
         {
             spriteRenderer.flipX = false;
             animator.Play("Zombie_WalkDown");
-        }
+        }*/
     }
 
     public void UpdateSpeed(float newSpeed)
