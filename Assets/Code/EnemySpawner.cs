@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int baseEnemies = 16;
     [SerializeField] private float enemiesPerSecond = 0.5f;
     [SerializeField] private float timeBetweenWaves = 5f;
+    [SerializeField] private float timeBetweenNewLevelWave = 2f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesPerSecondCap = 15f;
 
@@ -79,12 +80,22 @@ public class EnemySpawner : MonoBehaviour
         eps = EnemiesPerSecond();
     }
 
+    private IEnumerator NextWave()
+    {
+        yield return new WaitForSeconds(timeBetweenNewLevelWave);
+
+        isSpawning = true;
+        enemiesLeftToSpawn = EnemiesPerWave();
+        eps = EnemiesPerSecond();
+    }
+
+
     private void EndWave()
     {
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
-        StartCoroutine(StartWave());
+        StartCoroutine(NextWave());
     }
 
     //creating stronger waves based on wave number
