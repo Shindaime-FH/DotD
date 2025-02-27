@@ -94,7 +94,8 @@ public class GameManager : MonoBehaviour
         if (currentLevel == 1)
         {
             Debug.Log("Game Over!");
-            SceneManager.LoadScene("Level1");
+            // SceneManager.LoadScene("Level1"); immidiate restart
+            SceneManager.LoadScene("GameOverMenu");
         }
         else if (currentLevel == 2)
         {
