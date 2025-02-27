@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
     [Header("Game Over Settings")]
-    [SerializeField] private GameObject gameOverUI; // UI für Game Over
+    // [SerializeField] private GameObject gameOverUI; // UI für Game Over - for old gamescreen
     private bool isGameOver = false;
 
     public Image healthBar;
@@ -80,6 +81,10 @@ public class HealthManager : MonoBehaviour
     {
         isGameOver = true;
 
+        SceneManager.LoadScene("GameOverMenu"); // NEW GameOverScreenCode
+
+        /* OLD CODE 
+         * old GameOverScreen
         // Show the Game Over UI
         if (gameOverUI != null)
         {
@@ -96,9 +101,11 @@ public class HealthManager : MonoBehaviour
                 }
             }
         }
-
+  
         // Pause game
         Time.timeScale = 0f;
+
+        */
 
         Debug.Log("Game Over!");
     }
