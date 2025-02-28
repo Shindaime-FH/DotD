@@ -473,14 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589b59f69e4142e48bdbd7a5bcfb3aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuMusicSource: {fileID: 0}
-  cutsceneMusicSource: {fileID: 508742166}
-  levelMusicSource: {fileID: 0}
-  audioMixer: {fileID: 0}
-  musicVolumeParam: MusicVolume
-  menuMusicBaseVolume: 0.8
-  cutsceneMusicBaseVolume: 0.9
-  levelMusicBaseVolume: 0.7
+  fadeDuration: 1
 --- !u!82 &508742166
 AudioSource:
   m_ObjectHideFlags: 0
@@ -753,7 +746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skip
+  m_text: SKIP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -762,8 +755,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -948,7 +941,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 811, y: 471}
-  m_SizeDelta: {x: 456, y: 97}
+  m_SizeDelta: {x: 350, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143303001
 MonoBehaviour:
@@ -1014,7 +1007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4402210469502939287, guid: acef99ac68713f945b912bf2353c0ba1, type: 3}
+  m_Sprite: {fileID: -1151428079969631812, guid: 103ab895439837a468c849f936fd6227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
