@@ -468,6 +468,7 @@ MonoBehaviour:
   upgradeUI: {fileID: 1696743248126356945}
   upgradeButton: {fileID: 4975075439028896921}
   baseUpgradeCost: 200
+  freezeEffectPrefab: {fileID: 6430251276988696946, guid: db582cac344befc458a1f2f73c22d0a6, type: 3}
   targetingRange: 2
   aps: 0.25
   freezeTime: 1

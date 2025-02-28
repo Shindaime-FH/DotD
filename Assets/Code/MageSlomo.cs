@@ -11,6 +11,7 @@ public class MageSlomo : MonoBehaviour
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private int baseUpgradeCost = 200;
+    [SerializeField] private GameObject freezeEffectPrefab;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -84,8 +85,26 @@ public class MageSlomo : MonoBehaviour
     {
         return targetingRangeBase * Mathf.Pow(level, 0.15f);
     }
+    private IEnumerator FadeAndDestroy(SpriteRenderer sprite, GameObject freezeEffect)
+    {
+        float fadeDuration = 1f;  // Time to fade out
+        float elapsedTime = 0f;
+        Color startColor = sprite.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            sprite.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            yield return null;
+        }
+
+        Destroy(freezeEffect); // Remove the effect after fading
+    }
+
     private void FreezeEnemies()
     {
+        /* Old Code
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0)
@@ -99,14 +118,55 @@ public class MageSlomo : MonoBehaviour
 
                 StartCoroutine(ResetEnemySpeed(em));
             }
+        }*/
+        // Instantiate and scale the freeze effect
+        GameObject freezeEffect = Instantiate(freezeEffectPrefab, transform.position, Quaternion.identity);
+
+        float effectScale = targetingRange * 1.5f; // Adjust size to match AoE
+        freezeEffect.transform.localScale = new Vector3(effectScale, effectScale, 1);
+
+        // Start fade-out animation
+        SpriteRenderer freezeEffectSprite = freezeEffect.GetComponent<SpriteRenderer>();
+        StartCoroutine(FadeAndDestroy(freezeEffectSprite, freezeEffect));
+
+        // Apply slow effect to enemies in range
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+
+        foreach (var hit in hits)
+        {
+            EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
+            SpriteRenderer enemySprite = hit.transform.GetComponent<SpriteRenderer>();
+
+            if (em == null) continue;
+
+            if (em != null && enemySprite != null)
+            {
+                em.UpdateSpeed(0.5f); // Slow down enemy speed by 50%
+                enemySprite.color = Color.cyan;
+
+                StartCoroutine(ResetEnemySpeed(em, enemySprite));
+            }
         }
     }
 
-    private IEnumerator ResetEnemySpeed (EnemyMovement em)
+    private IEnumerator ResetEnemySpeed (EnemyMovement em, SpriteRenderer enemySprite)
     {
         yield return new WaitForSeconds(freezeTime);
 
         em.ResetSpeed();
+
+        // Fade out the baby blue color
+        float fadeDuration = 1f;
+        float elapsedTime = 0f;
+        Color startColor = enemySprite.color;
+        Color normalColor = Color.white;  // Change to default color
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            enemySprite.color = Color.Lerp(startColor, normalColor, elapsedTime / fadeDuration);
+            yield return null;
+        }
     }
     private void OnDrawGizmosSelected()
     {
