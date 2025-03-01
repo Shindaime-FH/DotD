@@ -8,11 +8,14 @@ public class MainMenu : MonoBehaviour
 
     public void ShowSettings()
     {
-        if (SettingsManager.Instance == null)
+        if (!SceneManager.GetSceneByName("SettingsMenu").isLoaded)
         {
-            Instantiate(settingsPrefab);
+            SceneManager.LoadScene("SettingsMenu", LoadSceneMode.Additive);
         }
-        SettingsManager.Instance.ToggleSettings();
+        else
+        {
+            SceneManager.UnloadSceneAsync("SettingsMenu");
+        }
     }
 
     public void PlayGame()

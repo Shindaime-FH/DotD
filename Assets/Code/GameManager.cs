@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void UpdateEnemyLevelFlags()
     {
-        foreach (EnemyMovement enemy in FindObjectsOfType<EnemyMovement>())
+        foreach (EnemyMovement enemy in FindObjectsByType<EnemyMovement>(FindObjectsSortMode.None))
         {
             enemy.SetLevelFlags(currentLevel);
         }
@@ -168,6 +168,24 @@ public class GameManager : MonoBehaviour
 
     internal void ResetForNewGame()
     {
-        throw new NotImplementedException();
+        currentLevel = 1;
+        playerCurrency = 100;
+        savedLevel1Health = -1f;
+        savedLevel2Health = -1f;
+        savedLevel3Health = -1f;
+        PlayerPrefs.DeleteAll();
     }
+    public bool IsInLevel()
+    {
+        return SceneManager.GetActiveScene().name.StartsWith("Level");
+    }
+
+    public void SetPauseState(bool paused)
+    {
+        if (IsInLevel())
+        {
+            Time.timeScale = paused ? 0 : 1;
+        }
+    }
+
 }

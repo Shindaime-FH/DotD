@@ -443,7 +443,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &508742164
+--- !u!1 &1501814571
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -451,45 +451,32 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 508742167}
-  - component: {fileID: 508742166}
-  - component: {fileID: 508742165}
+  - component: {fileID: 1501814573}
+  - component: {fileID: 1501814572}
+  - component: {fileID: 1501814574}
   m_Layer: 0
-  m_Name: BackgroundMusic
+  m_Name: Cutscene Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &508742165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508742164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589b59f69e4142e48bdbd7a5bcfb3aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeDuration: 1
---- !u!82 &508742166
+--- !u!82 &1501814572
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508742164}
+  m_GameObject: {fileID: 1501814571}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af17c9c3dd4f3e749bc981c5ca93fb61, type: 3}
   m_Resource: {fileID: 8300000, guid: af17c9c3dd4f3e749bc981c5ca93fb61, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -571,21 +558,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &508742167
+--- !u!4 &1501814573
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508742164}
+  m_GameObject: {fileID: 1501814571}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 346.91052, y: 273.941, z: -3.293993}
+  m_LocalPosition: {x: 308.73398, y: 186.48866, z: -6.0022407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1501814574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501814571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dbb42c32a022954d8ae954f3fc78cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioCategory: Cutscene
 --- !u!1 &1550516415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,4 +1034,4 @@ SceneRoots:
   - {fileID: 196284656}
   - {fileID: 1968001212}
   - {fileID: 455543982}
-  - {fileID: 508742167}
+  - {fileID: 1501814573}

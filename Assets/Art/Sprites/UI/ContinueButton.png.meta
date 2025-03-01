@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d0d301efddec4b345bd47b88a76933b7
+guid: 2a6d7fba0e1e02f42a6d1a1739d06c30
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6047490809003440643
-    second: Volume Slider_0
+      213: 2484601183152103202
+    second: ContinueButton_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Volume Slider_0
+      name: ContinueButton_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 92
-        height: 92
+        width: 428
+        height: 428
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df509e2762ff21ca0800000000000000
-      internalID: -6047490809003440643
+      spriteID: 22fdb42bc931b7220800000000000000
+      internalID: 2484601183152103202
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Volume Slider_0: -6047490809003440643
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

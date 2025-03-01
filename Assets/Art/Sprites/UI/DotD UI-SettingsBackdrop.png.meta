@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DotD UI-SettingsBackdrop_0: -9118904521141678258
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
