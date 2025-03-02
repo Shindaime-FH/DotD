@@ -3829,13 +3829,14 @@ MonoBehaviour:
   - {fileID: 5341892214202579712, guid: dd9b96f627ee4794786738246d1ecbd9, type: 3}
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
-  baseEnemies: 12
-  enemiesPerSecond: 1
-  difficultyScalingFactor: 0.7
-  enemiesPerSecondCap: 15
-  totalTime: 300
+  baseEnemies: 9
+  enemiesPerSecond: 0.6
+  difficultyScalingFactor: 0.6
+  enemiesPerSecondCap: 9
+  totalTime: 240
   timeBetweenWaves: 1
   initialDelay: 2
+  level3TotalTime: 300
 --- !u!114 &617457371
 MonoBehaviour:
   m_ObjectHideFlags: 0
