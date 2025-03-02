@@ -4372,6 +4372,42 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.78431374
       objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 7691019051660630683, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5615,11 +5651,13 @@ MonoBehaviour:
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
   baseEnemies: 16
-  enemiesPerSecond: 0.5
-  timeBetweenWaves: 5
-  timeBetweenNewLevelWave: 2
-  difficultyScalingFactor: 0.75
+  enemiesPerSecond: 1.2
+  difficultyScalingFactor: 0.8
   enemiesPerSecondCap: 15
+  totalTime: 420
+  timeBetweenWaves: 1
+  initialDelay: 0
+  level3TotalTime: 420
 --- !u!114 &617457371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15792,7 +15830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

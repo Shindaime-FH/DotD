@@ -4,28 +4,35 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
 
     [Header("Attributes")]
     [SerializeField] private int baseEnemies = 16;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 5f;
-    [SerializeField] private float timeBetweenNewLevelWave = 2f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesPerSecondCap = 15f;
+
+    [Header("Timing Settings")]
+    [SerializeField] private float totalTime = 180f;
+    [SerializeField] private float timeBetweenWaves = 1f;
+    [SerializeField] private float initialDelay = 2f;
+
+    [Header("Level Timing")]
+    [SerializeField] private float level3TotalTime = 420f;
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
+    // Private state variables
     private int currentWave = 1;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
-    private float eps; //enemies per Second
-    private bool isSpawning = false;
+    private float eps; // Enemies per second
+    private float timeElapsed = 0f;
+    private bool levelActive = true;
+    private bool shouldSpawnWaves = true;
 
     private void Awake()
     {
@@ -34,28 +41,94 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(StartWave());
+        // Set level-specific timing
+        if (GameManager.Instance.currentLevel == 3)
+        {
+            totalTime = level3TotalTime;
+        }
+
+        StartCoroutine(SpawnWavesContinuously());
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        if (!isSpawning) return;
+        if (!levelActive || !shouldSpawnWaves) return;
 
-        timeSinceLastSpawn += Time.deltaTime;
+        // Track total level time
+        timeElapsed += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
+        // Handle per-wave spawning
+        if (enemiesLeftToSpawn > 0)
         {
-            SpawnEnemy();
-            enemiesLeftToSpawn--;
-            enemiesAlive++;
-            timeSinceLastSpawn = 0f;
+            timeSinceLastSpawn += Time.deltaTime;
+            if (timeSinceLastSpawn >= (1f / eps))
+            {
+                SpawnEnemy();
+                enemiesLeftToSpawn--;
+                enemiesAlive++;
+                timeSinceLastSpawn = 0f;
+            }
         }
 
-        if (enemiesAlive == 0 && enemiesLeftToSpawn == 0)
+        // Check level completion when time expires
+        if (timeElapsed >= totalTime)
         {
-            EndWave();
+            levelActive = false;
+            shouldSpawnWaves = false;
+            StopAllSpawning();
+            CheckLevelCompletion();
         }
+    }
+
+    private IEnumerator SpawnWavesContinuously()
+    {
+        yield return new WaitForSeconds(initialDelay);
+
+        while (shouldSpawnWaves && timeElapsed < totalTime)
+        {
+            StartWave();
+
+            // Wait until current wave is fully spawned
+            while (enemiesLeftToSpawn > 0 && timeElapsed < totalTime)
+            {
+                yield return null;
+            }
+
+            // Wait for next wave
+            yield return new WaitForSeconds(timeBetweenWaves);
+            currentWave++;
+        }
+    }
+
+    private void StartWave()
+    {
+        enemiesLeftToSpawn = EnemiesPerWave();
+        eps = EnemiesPerSecond();
+    }
+
+    private void CheckLevelCompletion()
+    {
+        if (GameManager.Instance.currentLevel == 3)
+        {
+            StartCoroutine(CheckEnemiesBeforeWin());
+        }
+        else
+        {
+            // Existing logic for other levels
+            if (enemiesAlive <= 0)
+            {
+                StopAllSpawning();
+            }
+        }
+    }
+
+    private IEnumerator CheckEnemiesBeforeWin()
+    {
+        while (enemiesAlive > 0)
+        {
+            yield return null;
+        }
+        GameManager.Instance.CompleteLevel();
     }
 
     private void EnemyDestroyed()
@@ -65,40 +138,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int index = Random.Range(0, enemyPrefabs.Length); //important for choosing different enemy variation to spawn
-        GameObject prefabToSpawn = enemyPrefabs[index];
-        Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+        int index = Random.Range(0, enemyPrefabs.Length);
+        Instantiate(enemyPrefabs[index], LevelManager.main.startPoint.position, Quaternion.identity);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private IEnumerator StartWave()
-    {
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-        isSpawning = true;
-        enemiesLeftToSpawn = EnemiesPerWave();
-        eps = EnemiesPerSecond();
-    }
-
-    private IEnumerator NextWave()
-    {
-        yield return new WaitForSeconds(timeBetweenNewLevelWave);
-
-        isSpawning = true;
-        enemiesLeftToSpawn = EnemiesPerWave();
-        eps = EnemiesPerSecond();
-    }
-
-
-    private void EndWave()
-    {
-        isSpawning = false;
-        timeSinceLastSpawn = 0f;
-        currentWave++;
-        StartCoroutine(NextWave());
-    }
-
-    //creating stronger waves based on wave number
     private int EnemiesPerWave()
     {
         return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
@@ -106,14 +149,14 @@ public class EnemySpawner : MonoBehaviour
 
     private float EnemiesPerSecond()
     {
-        return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesPerSecondCap);
+        return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor),
+            0f, enemiesPerSecondCap);
     }
 
     public void StopAllSpawning()
     {
-        StopAllCoroutines(); // Stop current wave and delays
-        isSpawning = false;  // Prevent new spawns
-        enemiesLeftToSpawn = 0; // Clear remaining enemies
+        StopAllCoroutines();
+        shouldSpawnWaves = false;
+        enemiesLeftToSpawn = 0;
     }
-
 }
