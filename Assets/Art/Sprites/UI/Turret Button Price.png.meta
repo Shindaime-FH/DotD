@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Turret Button Price_0: 7564450647015028032
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

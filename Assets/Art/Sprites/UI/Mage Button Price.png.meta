@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mage Button Price_0: 5155452847078140576
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
