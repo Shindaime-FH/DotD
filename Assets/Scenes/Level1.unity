@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2725,6 +2725,42 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.78431374
       objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 7691019051660630683, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3217,12 +3253,13 @@ MonoBehaviour:
   - {fileID: 5341892214202579712, guid: dd9b96f627ee4794786738246d1ecbd9, type: 3}
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
-  baseEnemies: 16
-  enemiesPerSecond: 0.5
-  timeBetweenWaves: 5
-  timeBetweenNewLevelWave: 2
-  difficultyScalingFactor: 0.75
+  baseEnemies: 8
+  enemiesPerSecond: 0.8
+  difficultyScalingFactor: 0.6
   enemiesPerSecondCap: 15
+  totalTime: 180
+  timeBetweenWaves: 1
+  initialDelay: 2
 --- !u!114 &617457371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7815,7 +7852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  repairRate: 1
+  repairRate: 0.825
   brokenSprite: {fileID: 6790552668667635039, guid: a487a9403bcdcbd47b591c2e6add576a, type: 3}
   midRepairedSprite: {fileID: 2740688713881223265, guid: fe1a064e0b65afd4680fc656268e1457, type: 3}
   fullyRepairedSprite: {fileID: -2886711319528291232, guid: bb2867a6a9671bd4ab046d5d7502496f, type: 3}
@@ -8620,6 +8657,7 @@ GameObject:
   - component: {fileID: 1652985061}
   - component: {fileID: 1652985060}
   - component: {fileID: 1652985059}
+  - component: {fileID: 1652985062}
   m_Layer: 5
   m_Name: Catapult Turret
   m_TagString: Untagged
@@ -8740,6 +8778,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652985057}
   m_CullTransparentMesh: 1
+--- !u!114 &1652985062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652985057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ea8f880847ac84eb18ffa5ad9f603e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerIndex: 0
+  buttonImage: {fileID: 1652985060}
+  selectedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1675382820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7231277483570359787, guid: 5a4e81d413eaaae44a792e1823c22d4f, type: 3}
@@ -9955,6 +10009,7 @@ GameObject:
   - component: {fileID: 1905997725}
   - component: {fileID: 1905997724}
   - component: {fileID: 1905997723}
+  - component: {fileID: 1905997726}
   m_Layer: 5
   m_Name: Mage Turret
   m_TagString: Untagged
@@ -10075,6 +10130,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905997721}
   m_CullTransparentMesh: 1
+--- !u!114 &1905997726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905997721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ea8f880847ac84eb18ffa5ad9f603e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerIndex: 1
+  buttonImage: {fileID: 1905997724}
+  selectedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1906275823
 GameObject:
   m_ObjectHideFlags: 0

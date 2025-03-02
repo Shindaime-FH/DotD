@@ -8,6 +8,19 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private Tower[] towers;
     private int selectedTower = 0;
 
+    public event System.Action<int> OnTowerSelected; // New event
+
+    public void SetSelectedTower(int _selectedTower)
+    {
+        selectedTower = _selectedTower;
+        OnTowerSelected?.Invoke(_selectedTower); // Trigger event
+    }
+
+    public int GetSelectedTowerIndex() // Helper method
+    {
+        return selectedTower;
+    }
+
     private void Awake()
     {
         main = this;
@@ -16,11 +29,6 @@ public class BuildManager : MonoBehaviour
     public Tower GetSelectedTower()
     {
         return towers[selectedTower];
-    }
-
-    public void SetSelectedTower(int _selectedTower)
-    {
-        selectedTower = _selectedTower;
     }
 
     // Call this when failing level 2 to clear defences.

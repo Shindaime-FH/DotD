@@ -45,31 +45,17 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel()
     {
         CollectAllCoins();
-
         SaveCurrentLevelHealth();
 
-        int completedLevel = currentLevel;
-        switch (completedLevel)
+        if (currentLevel == 3)
         {
-            case 1:
-                savedLevel2Health = -1f;
-                break;
-            case 2:
-                savedLevel3Health = -1f;
-                break;
+            SceneManager.LoadScene("WinningScreenMenu");
         }
-
-        if (currentLevel < 3)
+        else
         {
             currentLevel++;
             SceneManager.LoadScene($"Level{currentLevel}");
         }
-        else
-        {
-            Debug.Log("All levels completed!");
-            CollectAllCoins();
-        }
-
     }
 
     public void CollectAllCoins()
@@ -77,8 +63,11 @@ public class GameManager : MonoBehaviour
         CurrencyPickup[] coins = FindObjectsOfType<CurrencyPickup>();
         foreach (CurrencyPickup coin in coins)
         {
-            playerCurrency += coin.GetCurrencyWorth();
-            Destroy(coin.gameObject);
+            if (coin.ShouldAutoCollect())
+            {
+                playerCurrency += coin.GetCurrencyWorth();
+                Destroy(coin.gameObject);
+            }
         }
     }
 

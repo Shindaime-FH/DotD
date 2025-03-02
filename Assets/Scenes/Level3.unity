@@ -926,6 +926,7 @@ GameObject:
   - component: {fileID: 147064473}
   - component: {fileID: 147064472}
   - component: {fileID: 147064471}
+  - component: {fileID: 147064474}
   m_Layer: 5
   m_Name: Catapult Turret
   m_TagString: Untagged
@@ -996,7 +997,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 617457371}
         m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
         m_MethodName: SetSelectedTower
         m_Mode: 3
@@ -1046,6 +1047,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147064469}
   m_CullTransparentMesh: 1
+--- !u!114 &147064474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147064469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ea8f880847ac84eb18ffa5ad9f603e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerIndex: 0
+  buttonImage: {fileID: 147064472}
+  selectedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &148827028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7231277483570359787, guid: 5a4e81d413eaaae44a792e1823c22d4f, type: 3}
@@ -4355,6 +4372,42 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.78431374
       objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564356712989850242, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 7691019051660630683, guid: 318ccf847311db645afa9ba501a1960b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5598,11 +5651,13 @@ MonoBehaviour:
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
   - {fileID: 5341892214202579712, guid: 6d73f12eb2d1c7746a33966f39a91730, type: 3}
   baseEnemies: 16
-  enemiesPerSecond: 0.5
-  timeBetweenWaves: 5
-  timeBetweenNewLevelWave: 2
-  difficultyScalingFactor: 0.75
+  enemiesPerSecond: 1.2
+  difficultyScalingFactor: 0.8
   enemiesPerSecondCap: 15
+  totalTime: 420
+  timeBetweenWaves: 1
+  initialDelay: 0
+  level3TotalTime: 420
 --- !u!114 &617457371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13823,6 +13878,7 @@ GameObject:
   - component: {fileID: 1692016633}
   - component: {fileID: 1692016632}
   - component: {fileID: 1692016631}
+  - component: {fileID: 1692016634}
   m_Layer: 5
   m_Name: Mage Turret
   m_TagString: Untagged
@@ -13893,7 +13949,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 617457371}
         m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
         m_MethodName: SetSelectedTower
         m_Mode: 3
@@ -13943,6 +13999,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692016629}
   m_CullTransparentMesh: 1
+--- !u!114 &1692016634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692016629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ea8f880847ac84eb18ffa5ad9f603e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerIndex: 1
+  buttonImage: {fileID: 1692016632}
+  selectedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1692967173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15783,7 +15855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
