@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Obsolete]
     public void CompleteLevel()
     {
         Debug.Log($"Attempting to complete level {currentLevel}");
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Obsolete]
     public void CollectAllCoins()
     {
         CurrencyPickup[] coins = FindObjectsOfType<CurrencyPickup>();
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Obsolete]
     public void FailLevel()
     {
         SaveCurrentLevelHealth();
@@ -105,6 +108,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Obsolete]
     private void SaveCurrentLevelHealth()
     {
         switch (currentLevel)

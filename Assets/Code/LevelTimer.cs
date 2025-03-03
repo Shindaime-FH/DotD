@@ -9,6 +9,7 @@ public class LevelTimer : MonoBehaviour
     [SerializeField] private float levelDuration = 300f;
     private EnemySpawner spawner;
 
+    [System.Obsolete]
     private void Start()
     {
         spawner = FindObjectOfType<EnemySpawner>();

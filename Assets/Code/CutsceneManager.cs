@@ -10,9 +10,48 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private Button skipButton;
     [SerializeField] private string nextScene = "Level1";
 
+    [Header("Video Settings")]
+    [SerializeField] private string videoURL = "https://drive.google.com/uc?export=download&id=1Ujky6OQ1Ol3573kV_cxmlrFKlxzYHHSn";
+
     private void Start()
     {
-        // Initialize button
+        ConfigureVideoPlayer();
+        ConfigureSkipButton();
+    }
+
+    void ConfigureVideoPlayer()
+    {
+        if (videoPlayer == null)
+        {
+            Debug.LogError("VideoPlayer reference missing!");
+            return;
+        }
+
+        // Set up URL-based playback
+        videoPlayer.source = VideoSource.Url;
+        videoPlayer.url = videoURL;
+
+        // Prepare video asynchronously
+        videoPlayer.prepareCompleted += OnVideoPrepared;
+        videoPlayer.errorReceived += HandleVideoError;
+        videoPlayer.Prepare();
+    }
+
+    void OnVideoPrepared(VideoPlayer vp)
+    {
+        videoPlayer.Play();
+        videoPlayer.loopPointReached += EndReached;
+    }
+
+    void HandleVideoError(VideoPlayer source, string message)
+    {
+        Debug.LogError($"Video Error: {message}");
+        // Fallback: Skip to next scene if video fails
+        SceneManager.LoadScene(nextScene);
+    }
+
+    void ConfigureSkipButton()
+    {
         if (skipButton != null)
         {
             skipButton.onClick.AddListener(SkipCutscene);
@@ -20,16 +59,6 @@ public class CutsceneManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Skip button reference missing!");
-        }
-
-        // Auto-advance setup
-        if (videoPlayer != null)
-        {
-            videoPlayer.loopPointReached += EndReached;
-        }
-        else
-        {
-            Debug.LogError("VideoPlayer reference missing!");
         }
     }
 

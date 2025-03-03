@@ -6,6 +6,7 @@ public class Stone : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float speedMultiplier = 30f;
 
     [Header("Attributes")]
     [SerializeField] private float stoneSpeed = 5f;
@@ -21,10 +22,8 @@ public class Stone : MonoBehaviour
     private void FixedUpdate()
     {
         if (!target) return;
-
         Vector2 direction = (target.position - transform.position).normalized;
-
-        rb.linearVelocity = direction * stoneSpeed;
+        rb.linearVelocity = direction * stoneSpeed * speedMultiplier;
     }
     private void OnCollisionEnter2D(Collision2D other)
     {

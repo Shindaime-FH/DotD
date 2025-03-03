@@ -29,6 +29,7 @@ public class DestructibleGate : MonoBehaviour
         UpdateSprite();
     }
 
+    [System.Obsolete]
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;

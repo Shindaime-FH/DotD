@@ -160,7 +160,7 @@ public class EnemyMovement : MonoBehaviour
             }
             else if (direction.x < 0)                               // Moving left
             {
-                spriteRenderer.flipX= false;                       // Ensure it's not flipped
+                spriteRenderer.flipX = false;                       // Ensure it's not flipped
                 animator.Play("Zombie_WalkDiagonalLeft");
                 animator.Play("Knight_Sword_WalkDiagonalLeft");
                 animator.Play("GoblinRider_WalkDiagonalLeft");
