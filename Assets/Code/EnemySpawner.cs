@@ -18,9 +18,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 1f;
     [SerializeField] private float initialDelay = 2f;
 
-    [Header("Level Timing")]
-    [SerializeField] private float level3TotalTime = 420f;
-
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
@@ -34,6 +31,13 @@ public class EnemySpawner : MonoBehaviour
     private bool levelActive = true;
     private bool shouldSpawnWaves = true;
 
+    public int EnemiesAlive => enemiesAlive; // Public accessor
+
+    public void ForceUpdateEnemyCount()
+    {
+        enemiesAlive = GameObject.FindGameObjectsWithTag("Enemy").Length;
+    }
+
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
@@ -41,10 +45,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        // Set level-specific timing
+        
         if (GameManager.Instance.currentLevel == 3)
         {
-            totalTime = level3TotalTime;
+            totalTime = 300f; // Directly set to 300 seconds
         }
 
         StartCoroutine(SpawnWavesContinuously());
@@ -108,27 +112,34 @@ public class EnemySpawner : MonoBehaviour
 
     private void CheckLevelCompletion()
     {
-        if (GameManager.Instance.currentLevel == 3)
-        {
-            StartCoroutine(CheckEnemiesBeforeWin());
-        }
-        else
-        {
+        StartCoroutine(CheckEnemiesBeforeWin());
             // Existing logic for other levels
             if (enemiesAlive <= 0)
             {
                 StopAllSpawning();
             }
-        }
     }
 
     private IEnumerator CheckEnemiesBeforeWin()
     {
-        while (enemiesAlive > 0)
+        Debug.Log("Starting enemy check...");
+
+        while (true)
         {
-            yield return null;
+            // Double-check both tracking methods
+            bool noSpawnerEnemies = enemiesAlive <= 0;
+            bool noSceneEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
+
+            if (noSpawnerEnemies && noSceneEnemies)
+            {
+                Debug.Log("All enemies cleared!");
+                GameManager.Instance.CompleteLevel();
+                yield break;
+            }
+
+            Debug.Log($"Tracking: {enemiesAlive} in spawner, {GameObject.FindGameObjectsWithTag("Enemy").Length} in scene");
+            yield return new WaitForSeconds(1f);
         }
-        GameManager.Instance.CompleteLevel();
     }
 
     private void EnemyDestroyed()
@@ -155,8 +166,17 @@ public class EnemySpawner : MonoBehaviour
 
     public void StopAllSpawning()
     {
-        StopAllCoroutines();
+        // Stop new spawns
         shouldSpawnWaves = false;
         enemiesLeftToSpawn = 0;
+        StopAllCoroutines();
+
+        // Destroy existing enemies and update count
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+        enemiesAlive = 0;
     }
 }

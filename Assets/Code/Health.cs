@@ -36,13 +36,16 @@ public class Health : MonoBehaviour
     }
     private void SpawnCoin()
     {
+        // Add this null check
+        if (this == null || gameObject == null) return;
+
         if (coinPrefab != null)
         {
-            GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity); // Spawn at enemy location
+            GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
             CurrencyPickup coinScript = coin.GetComponent<CurrencyPickup>();
             if (coinScript != null)
             {
-                coinScript.SetCurrencyWorth(currencyworth); // Assign coin value dynamically
+                coinScript.SetCurrencyWorth(currencyworth);
             }
         }
     }

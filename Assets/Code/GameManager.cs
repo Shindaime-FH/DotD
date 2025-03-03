@@ -44,16 +44,21 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        Debug.Log($"Attempting to complete level {currentLevel}");
+
         CollectAllCoins();
         SaveCurrentLevelHealth();
 
         if (currentLevel == 3)
         {
+            Debug.Log("Loading winning screen...");
+            currentLevel = 1; // Reset progression
             SceneManager.LoadScene("WinningScreenMenu");
         }
         else
         {
             currentLevel++;
+            Debug.Log($"Loading level {currentLevel}");
             SceneManager.LoadScene($"Level{currentLevel}");
         }
     }

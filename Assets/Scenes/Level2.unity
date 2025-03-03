@@ -3836,7 +3836,6 @@ MonoBehaviour:
   totalTime: 240
   timeBetweenWaves: 1
   initialDelay: 2
-  level3TotalTime: 300
 --- !u!114 &617457371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11948,7 +11947,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7692949774397112378, guid: db09cda7356557b4d90e6e08663275dd, type: 3}
+  m_Sprite: {fileID: -1953753589520376955, guid: d3abaf45abec933468cd855cf9443a52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
