@@ -13,11 +13,6 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private RectTransform blurPanel;
     [SerializeField] private CanvasGroup canvasGroup; // Add this serialized field
 
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
         InitializeUI();

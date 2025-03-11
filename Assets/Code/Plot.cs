@@ -34,15 +34,13 @@ public class Plot : MonoBehaviour
         if (towerObj != null)
         {
             // Check which type of tower is here.
-            Turret turret = towerObj.GetComponent<Turret>();
-            if (turret != null)
+            if (towerObj.TryGetComponent<Turret>(out var turret))
             {
                 turret.OpenUpgradeUI();
             }
             else
             {
-                MageSlomo mageTurret = towerObj.GetComponent<MageSlomo>();
-                if (mageTurret != null)
+                if (towerObj.TryGetComponent<MageSlomo>(out var mageTurret))
                 {
                     mageTurret.OpenUpgradeUIMage();
                 }

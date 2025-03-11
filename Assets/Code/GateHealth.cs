@@ -28,7 +28,8 @@ public class GateHealth : MonoBehaviour
         UpdateHealthUI();
         UpdateGateSprite();
     }
-    
+
+    [System.Obsolete]
     private void Update()
     {
         if (!isFullyRepaired)
@@ -50,7 +51,8 @@ public class GateHealth : MonoBehaviour
             GameManager.Instance.FailLevel();
         }
     }
-    
+
+    [System.Obsolete]
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -89,7 +91,8 @@ public class GateHealth : MonoBehaviour
             spriteRenderer.sprite = brokenSprite;
         }
     }
-    
+
+    [System.Obsolete]
     private void FullyRepairGate()
     {
         isFullyRepaired = true;

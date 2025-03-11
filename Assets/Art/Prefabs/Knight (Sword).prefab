@@ -138,6 +138,7 @@ MonoBehaviour:
   isFirstLevel: 0
   isSecondLevel: 0
   isThirdLevel: 0
+  animationPrefix: Knight_Sword_
 --- !u!114 &2144163836027050467
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using JetBrains.Annotations;
 using System.Runtime.CompilerServices;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -42,8 +41,7 @@ public class Health : MonoBehaviour
         if (coinPrefab != null)
         {
             GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-            CurrencyPickup coinScript = coin.GetComponent<CurrencyPickup>();
-            if (coinScript != null)
+            if (coin.TryGetComponent<CurrencyPickup>(out var coinScript))
             {
                 coinScript.SetCurrencyWorth(currencyworth);
             }

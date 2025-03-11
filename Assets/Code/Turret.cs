@@ -1,5 +1,4 @@
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,8 +35,10 @@ public class Turret : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);        // Coloring of the targeting range
+#if UNITY_EDITOR
+        UnityEditor.Handles.color = Color.cyan;
+        UnityEditor.Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+#endif
     }
     public void OpenUpgradeUI()
     {

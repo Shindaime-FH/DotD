@@ -151,6 +151,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 455543981}
   skipButton: {fileID: 2143303001}
   nextScene: Level1
+  videoURL: https://cdn.jsdelivr.net/gh/Shindaime-FH/DotD@main/Assets/Video/Cutscene_2.mp4
 --- !u!4 &196284656
 Transform:
   m_ObjectHideFlags: 0
@@ -202,8 +203,8 @@ Camera:
   m_GameObject: {fileID: 335727904}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -400,7 +401,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455543980}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7b6b997a15164544e9d04746ed341f8c, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -410,7 +411,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 0
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 1
@@ -418,7 +419,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://cdn.jsdelivr.net/gh/Shindaime-FH/DotD@main/Assets/Video/Cutscene_2.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -443,7 +444,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1501814571
+--- !u!1 &869663201
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -451,30 +452,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1501814573}
-  - component: {fileID: 1501814572}
-  - component: {fileID: 1501814574}
+  - component: {fileID: 869663204}
+  - component: {fileID: 869663203}
+  - component: {fileID: 869663202}
   m_Layer: 0
-  m_Name: Cutscene Audio Source
+  m_Name: LevelMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1501814572
+--- !u!114 &869663202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869663201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dbb42c32a022954d8ae954f3fc78cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioCategory: Cutscene
+--- !u!82 &869663203
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501814571}
+  m_GameObject: {fileID: 869663201}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af17c9c3dd4f3e749bc981c5ca93fb61, type: 3}
   m_Resource: {fileID: 8300000, guid: af17c9c3dd4f3e749bc981c5ca93fb61, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.04
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -558,13 +572,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1501814573
+--- !u!4 &869663204
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501814571}
+  m_GameObject: {fileID: 869663201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 308.73398, y: 186.48866, z: -6.0022407}
@@ -573,19 +587,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1501814574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501814571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbb42c32a022954d8ae954f3fc78cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioCategory: Cutscene
 --- !u!1 &1550516415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,4 +1035,4 @@ SceneRoots:
   - {fileID: 196284656}
   - {fileID: 1968001212}
   - {fileID: 455543982}
-  - {fileID: 1501814573}
+  - {fileID: 869663204}

@@ -19,6 +19,9 @@ public class EnemyMovement : MonoBehaviour
     public bool isSecondLevel = false;
     public bool isThirdLevel = false;
 
+    [Header("Animation")]
+    [SerializeField] private string animationPrefix;
+
     private void OnEnable()
     {
         if (GameManager.Instance != null)
@@ -83,6 +86,7 @@ public class EnemyMovement : MonoBehaviour
         pathIndex = 0;
     }
 
+    [System.Obsolete]
     private void Update()
     {
         if (currentPath == null || currentPath.Length == 0)
@@ -132,72 +136,42 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateAnimationAndSprite(Vector2 direction)
     {
-        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))        // Prioritize vertical movement if it's stronger
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
         {
-            if (direction.y > 0)                                    // Moving up
+            if (direction.y > 0)
             {
-                spriteRenderer.flipX = false;                       // Ensure it's not flipped
-                animator.Play("Zombie_WalkUp");
-                animator.Play("Knight_Sword_WalkUp");
-                animator.Play("GoblinRider_WalkUp");
+                spriteRenderer.flipX = false;
+                animator.Play(animationPrefix + "WalkUp");
             }
-            else if (direction.y < 0)                               // Moving down
+            else if (direction.y < 0)
             {
-                spriteRenderer.flipX = false;                       // Ensure it's not flipped
-                animator.Play("Zombie_WalkDown");
-                animator.Play("Knight_Sword_WalkDown");
-                animator.Play("GoblinRider_WalkDown");
+                spriteRenderer.flipX = false;
+                animator.Play(animationPrefix + "WalkDown");
             }
         }
         else
-        {                                                           // Horizontal movement: Flip sprite accordingly
-            if (direction.x > 0)                                    // Moving right
+        {
+            if (direction.x > 0)
             {
-                spriteRenderer.flipX = true;                        // Flip sprite horizontally
-                animator.Play("Zombie_WalkDiagonalLeft");
-                animator.Play("Knight_Sword_WalkDiagonalLeft");
-                animator.Play("GoblinRider_WalkDiagonalLeft");
+                spriteRenderer.flipX = true;
+                animator.Play(animationPrefix + "WalkDiagonalLeft");
             }
-            else if (direction.x < 0)                               // Moving left
+            else if (direction.x < 0)
             {
-                spriteRenderer.flipX= false;                       // Ensure it's not flipped
-                animator.Play("Zombie_WalkDiagonalLeft");
-                animator.Play("Knight_Sword_WalkDiagonalLeft");
-                animator.Play("GoblinRider_WalkDiagonalLeft");
+                spriteRenderer.flipX = false;
+                animator.Play(animationPrefix + "WalkDiagonalLeft");
             }
         }
-        /*if (animator == null)
-            return;
-
-        if (direction.x > 0)
-        {
-            spriteRenderer.flipX = true;
-            animator.Play("Zombie_WalkDiagonalLeft");
-        }
-        else if (direction.x < 0)
-        {
-            spriteRenderer.flipX = false;
-            animator.Play("Zombie_WalkDiagonalLeft");
-        }
-        else if (direction.y > 0)
-        {
-            spriteRenderer.flipX = false;
-            animator.Play("Zombie_WalkUp");
-        }
-        else if (direction.y < 0)
-        {
-            spriteRenderer.flipX = false;
-            animator.Play("Zombie_WalkDown");
-        }*/
     }
+
 
     public void UpdateSpeed(float newSpeed)
-    {
-        moveSpeed = newSpeed;
-    }
+   {
+       moveSpeed = newSpeed;
+   }
 
-    public void ResetSpeed()
-    {
-        moveSpeed = baseSpeed;
-    }
+   public void ResetSpeed()
+   {
+       moveSpeed = baseSpeed;
+   }
 }

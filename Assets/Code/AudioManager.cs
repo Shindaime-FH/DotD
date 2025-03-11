@@ -11,8 +11,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float levelBase = 0.04f;
 
     [Header("Current Settings")]
-    [SerializeField] public float masterVolume = 1f;
-    [SerializeField] public bool isMuted = false;
+    public float masterVolume = 1f;
+    public bool isMuted = false;
 
     private readonly Dictionary<string, float> categoryBaseVolumes = new();
     private readonly Dictionary<AudioSource, string> audioSources = new();
@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
     private void UpdateAllVolumes()
     {
         // Create a list to collect null references
-        List<AudioSource> toRemove = new List<AudioSource>();
+        List<AudioSource> toRemove = new();
 
         foreach (var source in audioSources.Keys)
         {

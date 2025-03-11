@@ -12,21 +12,10 @@ public class Tower
 
     public Tower(string _name, int _cost, GameObject _prefab, Vector3 _offset)
     {
-        name = _name; 
-        cost = _cost; 
+        name = _name;
+        cost = _cost;
         prefab = _prefab;
         offset = _offset;       // added for repositioning the tower
-        
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

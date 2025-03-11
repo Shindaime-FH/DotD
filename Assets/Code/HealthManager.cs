@@ -9,7 +9,7 @@ public class HealthManager : MonoBehaviour
     private bool isGameOver = false;
 
     public Image healthBar;
-    [SerializeField] public float healthAmount = 100f;
+    public float healthAmount = 100f;
 
     void Start()
     {
@@ -35,25 +35,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-       /* if(healthAmount <= 0)
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }*/
 
-        /*
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            TakeDamage(20);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Heal(5);
-        }
-        */
-    }
 
     public void TakeDamage(float damage)
     {

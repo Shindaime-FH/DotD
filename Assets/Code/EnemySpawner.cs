@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float initialDelay = 2f;
 
     [Header("Events")]
-    public static UnityEvent onEnemyDestroy = new UnityEvent();
+    public static UnityEvent onEnemyDestroy = new();
 
     // Private state variables
     private int currentWave = 1;
@@ -54,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnWavesContinuously());
     }
 
+    [System.Obsolete]
     private void Update()
     {
         if (!levelActive || !shouldSpawnWaves) return;
@@ -110,6 +111,7 @@ public class EnemySpawner : MonoBehaviour
         eps = EnemiesPerSecond();
     }
 
+    [System.Obsolete]
     private void CheckLevelCompletion()
     {
         StartCoroutine(CheckEnemiesBeforeWin());
@@ -120,6 +122,7 @@ public class EnemySpawner : MonoBehaviour
             }
     }
 
+    [System.Obsolete]
     private IEnumerator CheckEnemiesBeforeWin()
     {
         Debug.Log("Starting enemy check...");

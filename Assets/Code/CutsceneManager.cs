@@ -10,9 +10,52 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private Button skipButton;
     [SerializeField] private string nextScene = "Level1";
 
+    [SerializeField] private string videoURL = "https://cdn.jsdelivr.net/gh/Shindaime-FH/DotD@main/Assets/Video/Cutscene_2.mp4";
+
     private void Start()
     {
-        // Initialize button
+        ConfigureVideoPlayer();
+        ConfigureSkipButton();
+    }
+
+    void ConfigureVideoPlayer()
+    {
+        if (videoPlayer == null)
+        {
+            Debug.LogError("VideoPlayer reference missing!");
+            return;
+        }
+
+        videoPlayer.source = VideoSource.Url;
+        videoPlayer.url = videoURL;
+
+        // Essential for WebGL audio
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
+
+        // Required for browser autoplay policies
+        videoPlayer.playOnAwake = false;
+
+        // Prepare video asynchronously
+        videoPlayer.prepareCompleted += OnVideoPrepared;
+        videoPlayer.errorReceived += HandleVideoError;
+        videoPlayer.Prepare();
+    }
+
+    void OnVideoPrepared(VideoPlayer vp)
+    {
+        videoPlayer.Play();
+        videoPlayer.loopPointReached += EndReached;
+    }
+
+    void HandleVideoError(VideoPlayer source, string message)
+    {
+        Debug.LogError($"Video Error: {message}");
+        // Fallback: Skip to next scene if video fails
+        SceneManager.LoadScene(nextScene);
+    }
+
+    void ConfigureSkipButton()
+    {
         if (skipButton != null)
         {
             skipButton.onClick.AddListener(SkipCutscene);
@@ -20,16 +63,6 @@ public class CutsceneManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Skip button reference missing!");
-        }
-
-        // Auto-advance setup
-        if (videoPlayer != null)
-        {
-            videoPlayer.loopPointReached += EndReached;
-        }
-        else
-        {
-            Debug.LogError("VideoPlayer reference missing!");
         }
     }
 

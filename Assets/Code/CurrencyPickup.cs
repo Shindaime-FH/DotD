@@ -13,10 +13,15 @@ public class CurrencyPickup : MonoBehaviour
 
     private void Start()
     {
-        // Existing UI finding code
         if (currencyUI == null)
         {
-            currencyUI = GameObject.Find("Currency")?.GetComponent<TextMeshProUGUI>();
+            // Replace null propagation with explicit null check
+            GameObject currencyObject = GameObject.Find("Currency");
+            if (currencyObject != null)
+            {
+                currencyUI = currencyObject.GetComponent<TextMeshProUGUI>();
+            }
+
             if (currencyUI == null)
             {
                 Debug.LogError("Currency UI TextMeshProUGUI not found!");
