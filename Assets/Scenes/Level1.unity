@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5411830579390471805, guid: 5fc750004a68bf04b957b829d62da393, type: 3}
+  m_Sprite: {fileID: 5697150419659934364, guid: 3e5b2e6afd34edc438f71911d0f79d4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4629,7 +4629,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 250, y: 250}
-  m_Spacing: {x: 0, y: 30}
+  m_Spacing: {x: 0, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &870070189
@@ -5922,7 +5922,7 @@ GameObject:
   - component: {fileID: 1109574878}
   - component: {fileID: 1109574877}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8784,7 +8784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7564450647015028032, guid: f741c21bfb7c79945821ccf1a84451c9, type: 3}
+  m_Sprite: {fileID: -1617412248382153356, guid: 3d7dc17f7d46cd042833083139f9d164, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10136,7 +10136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5155452847078140576, guid: 6d6eb47bdcf6b184881308b938928179, type: 3}
+  m_Sprite: {fileID: -9117284711169711514, guid: 44ada2b097ac4534eaac58489135f984, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
