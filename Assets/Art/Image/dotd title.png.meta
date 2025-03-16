@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 4471dd6cb6f42474fb87a5a2dcd5f5d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8114426041742315552
+    second: dotd title_0
+  - first:
+      213: -4016198062300351513
+    second: dotd title_1
+  - first:
+      213: -2307683096387343315
+    second: dotd title_2
+  - first:
+      213: 4364479557179843119
+    second: dotd title_3
+  - first:
+      213: 513774336790074486
+    second: dotd title_4
+  - first:
+      213: -4737767136968545363
+    second: dotd title_5
+  - first:
+      213: 1970371615728204770
+    second: dotd title_6
+  - first:
+      213: -261801718071232345
+    second: dotd title_7
+  - first:
+      213: 4493911376819060606
+    second: dotd title_8
+  - first:
+      213: -3083159385617332064
+    second: dotd title_9
+  - first:
+      213: -5959724680398564149
+    second: dotd title_10
+  - first:
+      213: -5350240132908706473
+    second: dotd title_11
+  - first:
+      213: 6772043347577503002
+    second: dotd title_12
+  - first:
+      213: -3657800992117912633
+    second: dotd title_13
+  - first:
+      213: -7252795717351726744
+    second: dotd title_14
+  - first:
+      213: -6829727908463248133
+    second: dotd title_15
+  - first:
+      213: 2381609038994751314
+    second: dotd title_16
+  - first:
+      213: 5228629004066701237
+    second: dotd title_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dotd title_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 27
+        width: 98
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef25c1d184c36f80800000000000000
+      internalID: -8114426041742315552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_1
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 27
+        width: 92
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e3b9fc14299348c0800000000000000
+      internalID: -4016198062300351513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_2
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 18
+        width: 90
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ca8a1537679ffd0800000000000000
+      internalID: -2307683096387343315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 27
+        width: 92
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f22a823880fb19c30800000000000000
+      internalID: 4364479557179843119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_4
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 16
+        width: 120
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6749517890b412700800000000000000
+      internalID: 513774336790074486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_5
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 27
+        width: 104
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab687404e1104eb0800000000000000
+      internalID: -4737767136968545363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_6
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 27
+        width: 92
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebfdf68b8a285b10800000000000000
+      internalID: 1970371615728204770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_7
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 6
+        width: 111
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a8f6c879b4ed5cf0800000000000000
+      internalID: -261801718071232345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_8
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 27
+        width: 79
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7ff26366949d5e30800000000000000
+      internalID: 4493911376819060606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_9
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 28
+        width: 99
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a80e52cfda6635d0800000000000000
+      internalID: -3083159385617332064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_10
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 18
+        width: 90
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc417b9aafdca4da0800000000000000
+      internalID: -5959724680398564149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_11
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 0
+        width: 133
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75510f622f020c5b0800000000000000
+      internalID: -5350240132908706473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_12
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 7
+        width: 101
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1d77e77b812bfd50800000000000000
+      internalID: 6772043347577503002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_13
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 27
+        width: 92
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb8db5a061ec3dc0800000000000000
+      internalID: -3657800992117912633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_14
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 27
+        width: 99
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 861a6c6d8b4e85b90800000000000000
+      internalID: -7252795717351726744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_15
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 12
+        width: 358
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfcf97717aee731a0800000000000000
+      internalID: -6829727908463248133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_16
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 27
+        width: 92
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f342b7dcc2d0120800000000000000
+      internalID: 2381609038994751314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dotd title_17
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 27
+        width: 103
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bf33b17062df8840800000000000000
+      internalID: 5228629004066701237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dotd title_0: -8114426041742315552
+      dotd title_1: -4016198062300351513
+      dotd title_10: -5959724680398564149
+      dotd title_11: -5350240132908706473
+      dotd title_12: 6772043347577503002
+      dotd title_13: -3657800992117912633
+      dotd title_14: -7252795717351726744
+      dotd title_15: -6829727908463248133
+      dotd title_16: 2381609038994751314
+      dotd title_17: 5228629004066701237
+      dotd title_2: -2307683096387343315
+      dotd title_3: 4364479557179843119
+      dotd title_4: 513774336790074486
+      dotd title_5: -4737767136968545363
+      dotd title_6: 1970371615728204770
+      dotd title_7: -261801718071232345
+      dotd title_8: 4493911376819060606
+      dotd title_9: -3083159385617332064
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
