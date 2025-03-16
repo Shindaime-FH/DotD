@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      New Catapult Button_0: -1617412248382153356
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
