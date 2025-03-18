@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Persistent Data")]
     public int currentLevel = 1;
-    public int playerCurrency = 100;
+    public int playerCurrency = 500;
 
     private float savedLevel1Health = -1f;
     private float savedLevel2Health = -1f;
