@@ -143,6 +143,12 @@ MonoBehaviour:
   upgradeUI: {fileID: 7711703615830571384}
   upgradeButton: {fileID: 3822477845845806259}
   baseUpgradeCost: 100
+  upgradeCostText: {fileID: 491942272848104382}
+  turretSpriteRenderer: {fileID: 4789770987694820676}
+  upgradeSprites:
+  - {fileID: 4130640169021434097, guid: 8854503a4c4559e4195a5c17d9409396, type: 3}
+  - {fileID: 3465286685962602723, guid: 9c62eedc70031804d8ab46b64b86b962, type: 3}
+  - {fileID: 7028616704906629411, guid: 475f1dc14a6dac0438d4db4b5ab1821e, type: 3}
   targetingRange: 4
   rotationSpeed: 200
   bps: 1
@@ -267,7 +273,7 @@ GameObject:
   - component: {fileID: 5184763949807976674}
   - component: {fileID: 491942272848104382}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Upgrade Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,15 +288,15 @@ RectTransform:
   m_GameObject: {fileID: 5621790874537372146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 455553299663091645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.039993286, y: -0.769989}
-  m_SizeDelta: {x: -5.920006, y: -21.54}
+  m_AnchoredPosition: {x: -0.039993286, y: -0.76999664}
+  m_SizeDelta: {x: -5.920006, y: -21.53999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5184763949807976674
 CanvasRenderer:
@@ -531,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3971537283162898952
 RectTransform:
   m_ObjectHideFlags: 0

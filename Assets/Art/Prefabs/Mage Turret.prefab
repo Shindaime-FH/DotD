@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 340, y: 100}
+  m_SizeDelta: {x: 250, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3890491615684244122
 CanvasRenderer:
@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7263534684696391916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 6708240037961831436}
   - component: {fileID: 4745703452634029615}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Upgrade Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,15 +250,15 @@ RectTransform:
   m_GameObject: {fileID: 3628289845749950674}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2461690795954112977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.037506104, y: 2.625}
-  m_SizeDelta: {x: 0.07500458, y: -14.75}
+  m_AnchoredPosition: {x: -0.037506104, y: 2.249997}
+  m_SizeDelta: {x: 0.07500458, y: -15.499993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6708240037961831436
 CanvasRenderer:
@@ -288,7 +288,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade
+  m_text: 'Upgrade
+
+    Cost 200
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -469,6 +473,12 @@ MonoBehaviour:
   upgradeButton: {fileID: 4975075439028896921}
   baseUpgradeCost: 200
   freezeEffectPrefab: {fileID: 6430251276988696946, guid: db582cac344befc458a1f2f73c22d0a6, type: 3}
+  upgradeCostText: {fileID: 4745703452634029615}
+  mageSpriteRenderer: {fileID: 8353883978272889379}
+  upgradeSprites:
+  - {fileID: 4130640169021434097, guid: c92aa2d768c9dbc4fbd1ca93f0edfd8c, type: 3}
+  - {fileID: 3465286685962602723, guid: b3a1a5b5efe66a4468d1c3d245240c8b, type: 3}
+  - {fileID: 7028616704906629411, guid: acd71fd6943eccf4aaede36e4ac89ddf, type: 3}
   targetingRange: 2
   aps: 0.25
   freezeTime: 1

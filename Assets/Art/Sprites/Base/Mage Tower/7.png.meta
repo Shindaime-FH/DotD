@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 3eec4a95e839f8646b0d7c5784806131
+guid: acd71fd6943eccf4aaede36e4ac89ddf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1285476290272987802
-    second: new main menu background-enhance-2x-min_0
+      213: 7028616704906629411
+    second: 7_0
+  - first:
+      213: -922402802239089382
+    second: 7_1
+  - first:
+      213: 1526234616134381953
+    second: 7_2
+  - first:
+      213: 7230141825694988423
+    second: 7_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,30 +105,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: new main menu background-enhance-2x-min_0
+      name: 7_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 4456
-        height: 2228
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9a88e010ede6d110800000000000000
-      internalID: 1285476290272987802
+      spriteID: 321165667a9aa8160800000000000000
+      internalID: 7028616704906629411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 0
+        width: 64
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a15d6b8d987f233f0800000000000000
+      internalID: -922402802239089382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 181389a0c464e2510800000000000000
+      internalID: 1526234616134381953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 0
+        width: 64
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7887e3cfeaf965460800000000000000
+      internalID: 7230141825694988423
       vertices: []
       indices: 
       edges: []
@@ -148,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      new main menu background-enhance-2x-min_0: 1285476290272987802
+      7_0: 7028616704906629411
+      7_1: -922402802239089382
+      7_2: 1526234616134381953
+      7_3: 7230141825694988423
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

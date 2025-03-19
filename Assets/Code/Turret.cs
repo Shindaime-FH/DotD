@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Turret : MonoBehaviour
 {
@@ -12,13 +13,16 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private int baseUpgradeCost = 100;
-
+    [SerializeField] private TextMeshProUGUI upgradeCostText;
+    [SerializeField] private SpriteRenderer turretSpriteRenderer;
+    [SerializeField] private Sprite[] upgradeSprites;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float bps = 1f;        //bullet per second
 
+    public int UpgradeCost => CalculateCost();
     private float bpsBase;
     private float targetingRangeBase;
 
@@ -32,6 +36,11 @@ public class Turret : MonoBehaviour
         targetingRangeBase = targetingRange;
 
         upgradeButton.onClick.AddListener(Upgrade);     //So it will close the UI
+
+        if (upgradeSprites.Length < 0)
+        {
+            turretSpriteRenderer.sprite = upgradeSprites[0];
+        }
     }
     private void OnDrawGizmosSelected()
     {
@@ -42,7 +51,8 @@ public class Turret : MonoBehaviour
     }
     public void OpenUpgradeUI()
     {
-        upgradeUI.SetActive(true);      
+        upgradeUI.SetActive(true);
+        upgradeCostText.text = "Upgrade Cost: " + UpgradeCost.ToString();
     }
     public void CloseUpgradeUI()
     {
@@ -52,19 +62,24 @@ public class Turret : MonoBehaviour
 
     public void Upgrade()
     {
-        if (CalculateCost() > LevelManager.main.currency) return;
+        if (UpgradeCost > LevelManager.main.currency) return;
 
-        LevelManager.main.SpendCurrency(CalculateCost());
+        LevelManager.main.SpendCurrency(UpgradeCost);
 
         level++;
 
         bps = CalculateBPS();
         targetingRange = CalculateRange();
 
+        if (upgradeSprites.Length > level - 1)
+        {
+            turretSpriteRenderer.sprite = upgradeSprites[level - 1];
+        }
+
         CloseUpgradeUI();
         Debug.Log("New BPS: " + bps);
-        Debug.Log("New BPS: "+ targetingRange); 
-        Debug.Log("New Cost: "+ CalculateCost());
+        Debug.Log("New BPS: " + targetingRange); 
+        Debug.Log("New Cost: " + UpgradeCost);
     }
     private int CalculateCost()
     {

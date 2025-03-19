@@ -5,17 +5,24 @@ public class UpgradeUIHandler : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     public bool mouse_over = false;
 
+    private void Update()
+    {
+        // Close the UI if clicking outside the upgrade UI
+        if (Input.GetMouseButtonDown(0) && !mouse_over && !EventSystem.current.IsPointerOverGameObject())
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        mouse_over = true;      // so the mouse hovering over the Upgrade recognizes it
+        mouse_over = true; // Mouse is hovering over the upgrade UI
         UIManager.main.SetHoveringState(true);
     }
+
     public void OnPointerExit(PointerEventData eventData)
     {
-        mouse_over = false;     // so the mouse doesn't accidentally click besides the Upgrade to create a tower
+        mouse_over = false; // Mouse is no longer hovering over the upgrade UI
         UIManager.main.SetHoveringState(false);
-        gameObject.SetActive(false);        // this will close the UI for us immediately
     }
-
-
 }

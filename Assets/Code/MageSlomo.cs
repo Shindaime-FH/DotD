@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using static UnityEngine.GraphicsBuffer;
 
 public class MageSlomo : MonoBehaviour
@@ -11,12 +12,16 @@ public class MageSlomo : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private int baseUpgradeCost = 200;
     [SerializeField] private GameObject freezeEffectPrefab;
+    [SerializeField] private TextMeshProUGUI upgradeCostText;
+    [SerializeField] private SpriteRenderer mageSpriteRenderer;
+    [SerializeField] private Sprite[] upgradeSprites;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float aps = 4f;    // attacks per second
     [SerializeField] private float freezeTime = 1f;
 
+    public int UpgradeCost => CalculateCostMage();
     private float apsBase;
     private float targetingRangeBase;
 
@@ -30,6 +35,11 @@ public class MageSlomo : MonoBehaviour
         targetingRangeBase = targetingRange;
 
         upgradeButton.onClick.AddListener(Upgrade);     //So it will close the UI
+
+        if (upgradeSprites.Length > 0)
+        {
+            mageSpriteRenderer.sprite = upgradeSprites[0];
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +57,7 @@ public class MageSlomo : MonoBehaviour
     public void OpenUpgradeUIMage()
     {
         upgradeUI.SetActive(true);
+        upgradeCostText.text = "Upgrade Cost: " + UpgradeCost.ToString();
     }
     public void CloseUpgradeUIMage()
     {
@@ -56,19 +67,24 @@ public class MageSlomo : MonoBehaviour
 
     public void Upgrade()
     {
-        if (CalculateCostMage() > LevelManager.main.currency) return;
+        if (UpgradeCost > LevelManager.main.currency) return;
 
-        LevelManager.main.SpendCurrency(CalculateCostMage());
+        LevelManager.main.SpendCurrency(UpgradeCost);
 
         level++;
 
         aps = CalculateAPS();
         targetingRange = CalculateRange();
 
+        if (upgradeSprites.Length > level - 1)
+        {
+            mageSpriteRenderer.sprite = upgradeSprites[level - 1];
+        }
+
         CloseUpgradeUIMage();
         Debug.Log("New APS: " + aps);
         Debug.Log("New APS: " + targetingRange);
-        Debug.Log("New Cost: " + CalculateCostMage());
+        Debug.Log("New Cost: " + UpgradeCost);
     }
     private int CalculateCostMage()
     {
