@@ -17,14 +17,14 @@ public class LevelManager : MonoBehaviour
     public Transform[] Paththirdlvlalt;
     public Transform[] PaththirdlvlaltVar;
 
-    public int currency;
+    public int currency; //obsolete ! never in use
 
     private void Awake()
     {
         main = this;
     }
 
-    public void IncreaseCurrency(int amount)
+    public void IncreaseCurrency(int amount) //Obsolete?
     {
         GameManager.Instance.playerCurrency += amount;
     }

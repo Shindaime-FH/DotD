@@ -56,7 +56,9 @@ public class MageSlomo : MonoBehaviour
 
     public void Upgrade()
     {
-        if (CalculateCostMage() > LevelManager.main.currency) return;
+        int bank = GameManager.Instance.playerCurrency;
+
+        if (CalculateCostMage() > bank) return;
 
         LevelManager.main.SpendCurrency(CalculateCostMage());
 
@@ -67,7 +69,7 @@ public class MageSlomo : MonoBehaviour
 
         CloseUpgradeUIMage();
         Debug.Log("New APS: " + aps);
-        Debug.Log("New APS: " + targetingRange);
+        Debug.Log("New AR: " + targetingRange);
         Debug.Log("New Cost: " + CalculateCostMage());
     }
     private int CalculateCostMage()

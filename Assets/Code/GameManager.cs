@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
         UpdateEnemyLevelFlags();
+        if (currentLevel == 1) { playerCurrency = 500; }
     }
 
     private void UpdateEnemyLevelFlags()

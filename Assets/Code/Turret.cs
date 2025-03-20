@@ -19,6 +19,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float bps = 1f;        //bullet per second
 
+    public static CurrencyPickup CurrencyPickup = new CurrencyPickup();
+
     private float bpsBase;
     private float targetingRangeBase;
 
@@ -52,7 +54,14 @@ public class Turret : MonoBehaviour
 
     public void Upgrade()
     {
-        if (CalculateCost() > LevelManager.main.currency) return;
+        Debug.Log("Start Upgrading...");
+
+        int bank = GameManager.Instance.playerCurrency; //optimizing needed
+        Debug.Log("You got:" + bank + " gold.");
+
+        if (CalculateCost() > bank ) return; //whats our current balance
+
+        Debug.Log("Time for upgrading...");
 
         LevelManager.main.SpendCurrency(CalculateCost());
 
@@ -63,7 +72,7 @@ public class Turret : MonoBehaviour
 
         CloseUpgradeUI();
         Debug.Log("New BPS: " + bps);
-        Debug.Log("New BPS: "+ targetingRange); 
+        Debug.Log("New TR: "+ targetingRange); 
         Debug.Log("New Cost: "+ CalculateCost());
     }
     private int CalculateCost()
