@@ -22,6 +22,8 @@ public class EnemyMovement : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private string animationPrefix;
 
+    private Vector2 lastDirection; // Store the last movement direction
+
     private void OnEnable()
     {
         if (GameManager.Instance != null)
@@ -123,9 +125,12 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
+    private bool canMove = true;
 
     private void FixedUpdate()
     {
+        if (!canMove) return; // Stop movement
+
         if (currentPath == null || currentPath.Length == 0)
             return;
 
@@ -134,8 +139,17 @@ public class EnemyMovement : MonoBehaviour
         UpdateAnimationAndSprite(direction);
     }
 
+    public void StopMovement()
+    {
+       canMove = false;
+       rb.linearVelocity = Vector2.zero;
+    }
+
     private void UpdateAnimationAndSprite(Vector2 direction)
     {
+        lastDirection = direction;  // Storing the last movement direction
+        Debug.Log("Last direction: " + lastDirection);  
+
         if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
         {
             if (direction.y > 0)
@@ -163,7 +177,43 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-
+    // Method to get the death animation based on the last direction
+    public string GetDeathAnimation()
+    {
+        Debug.Log("GetDeathAnimation called");
+        if (Mathf.Abs(lastDirection.y) > Mathf.Abs(lastDirection.x))
+        {
+            // Vertical movement
+            if (lastDirection.y > 0)
+            {
+                Debug.Log("Playing DeathUp");
+                return animationPrefix + "DeathUp"; // Death animation for upward direction
+            }
+            else
+            {
+                Debug.Log("Playing DeathDown");
+                return animationPrefix + "DeathDown"; // Death animation for downward direction
+            }
+        }
+        else
+        {
+            // Horizontal movement
+            if (lastDirection.x > 0)
+            {
+                Debug.Log("Playing DeathLeft (flipped for right)");
+                // Flip the sprite for right direction
+                spriteRenderer.flipX = true;
+                return animationPrefix + "DeathDiagonalLeft"; // Use the same death animation for both left and right
+            }
+            else
+            {
+                Debug.Log("Playing DeathLeft");
+                // No flip for left direction
+                spriteRenderer.flipX = false;
+                return animationPrefix + "DeathDiagonalLeft"; // Use the same death animation for both left and right
+            }
+        }
+    }
 
     public void UpdateSpeed(float newSpeed)
    {

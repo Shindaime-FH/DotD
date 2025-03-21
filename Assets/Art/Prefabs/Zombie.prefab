@@ -154,6 +154,8 @@ MonoBehaviour:
   hitPoints: 8
   currencyworth: 50
   coinPrefab: {fileID: 2489070444124667776, guid: d7fc9b7c5e4fdef4ea60fceddf9663cc, type: 3}
+  animator: {fileID: 628088809204165110}
+  enemyMovement: {fileID: 8385578450715196681}
 --- !u!95 &628088809204165110
 Animator:
   serializedVersion: 7
