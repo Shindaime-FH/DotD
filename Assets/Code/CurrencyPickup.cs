@@ -50,7 +50,10 @@ public class CurrencyPickup : MonoBehaviour
 
     private void OnMouseDown()
     {
+        SoundManager.instance.PlayCoinSound(); // Plays sound if clicked on but not by auto-collecting
+
         CollectCoin();
+   
     }
 
     public void CollectCoin()
