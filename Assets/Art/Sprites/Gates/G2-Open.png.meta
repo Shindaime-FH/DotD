@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a487a9403bcdcbd47b591c2e6add576a
+guid: 00f6fef7e5b01db4db5cbf4319a40c21
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6790552668667635039
-    second: New-Gate1-Open_0
+      213: 22061502097127875
+    second: G2-Open_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New-Gate1-Open_0
+      name: G2-Open_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 359
-        height: 305
+        width: 378
+        height: 316
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f55e38c9ca3ec3e50800000000000000
-      internalID: 6790552668667635039
+      spriteID: 3c9f5bbb1d06e4000800000000000000
+      internalID: 22061502097127875
       vertices: []
       indices: 
       edges: []
@@ -134,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      New-Gate1-Open_0: 6790552668667635039
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

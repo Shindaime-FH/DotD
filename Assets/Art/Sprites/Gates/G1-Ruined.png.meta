@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9563dbf34678659449864d0e41904b81
+guid: 82a582c8b1917544b88d7496491e7353
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5460777677784576783
-    second: pxArt (7)_0
+      213: -4519785749096499593
+    second: G1-Ruined_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pxArt (7)_0
+      name: G1-Ruined_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1fc844e62ab6734b0800000000000000
-      internalID: -5460777677784576783
+      spriteID: 776fa3cdece7641c0800000000000000
+      internalID: -4519785749096499593
       vertices: []
       indices: 
       edges: []

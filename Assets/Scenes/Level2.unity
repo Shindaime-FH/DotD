@@ -14560,9 +14560,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   repairRate: 0.5
-  brokenSprite: {fileID: 6619012117824645033, guid: c734affdf3aa40f47b11d401daa92224, type: 3}
-  midRepairedSprite: {fileID: -687782746126247933, guid: 686669261dfcd814f882cc40c4be0b77, type: 3}
-  fullyRepairedSprite: {fileID: -8398950293122100699, guid: ee33db7a38a8415409a01a5eaf6fdafa, type: 3}
+  brokenSprite: {fileID: 22061502097127875, guid: 00f6fef7e5b01db4db5cbf4319a40c21, type: 3}
+  midRepairedSprite: {fileID: -4360139030549193187, guid: 6aead49d917ab7e489d2cc77faf50b78, type: 3}
+  fullyRepairedSprite: {fileID: 1046129240565980536, guid: b8c30b77f5726a54d87d371530f696f6, type: 3}
   healthBar: {fileID: 782651749}
 --- !u!212 &1279520338
 SpriteRenderer:
@@ -14608,7 +14608,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6619012117824645033, guid: c734affdf3aa40f47b11d401daa92224, type: 3}
+  m_Sprite: {fileID: 22061502097127875, guid: 00f6fef7e5b01db4db5cbf4319a40c21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -19692,7 +19692,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2886711319528291232, guid: bb2867a6a9671bd4ab046d5d7502496f, type: 3}
+  m_Sprite: {fileID: -2050461810738023566, guid: d7e7093ba3102414995ce3dbe602afa0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -19732,9 +19732,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  healthySprite: {fileID: -2886711319528291232, guid: bb2867a6a9671bd4ab046d5d7502496f, type: 3}
-  damagedSprite: {fileID: 2740688713881223265, guid: fe1a064e0b65afd4680fc656268e1457, type: 3}
-  destroyedSprite: {fileID: 6790552668667635039, guid: a487a9403bcdcbd47b591c2e6add576a, type: 3}
+  healthySprite: {fileID: -2050461810738023566, guid: d7e7093ba3102414995ce3dbe602afa0, type: 3}
+  damagedSprite: {fileID: -4519785749096499593, guid: 82a582c8b1917544b88d7496491e7353, type: 3}
+  destroyedSprite: {fileID: -4023815799163685239, guid: 6f5c10b59c2beb747960e506956309c6, type: 3}
   healthBar: {fileID: 393347884}
 --- !u!61 &1746491415
 BoxCollider2D:
@@ -21460,7 +21460,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -1953753589520376955, guid: d3abaf45abec933468cd855cf9443a52, type: 3}
+  m_Sprite: {fileID: 8150720986340939692, guid: b05dcacb9a80716488371caa89238367, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

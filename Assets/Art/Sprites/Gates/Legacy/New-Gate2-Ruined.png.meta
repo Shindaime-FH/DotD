@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: acef99ac68713f945b912bf2353c0ba1
+guid: 686669261dfcd814f882cc40c4be0b77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4402210469502939287
-    second: Play Button Sprite_0
+      213: -687782746126247933
+    second: New-Gate2-Ruined_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Play Button Sprite_0
+      name: New-Gate2-Ruined_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 456
-        height: 97
+        width: 378
+        height: 316
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7907a3d191bc71d30800000000000000
-      internalID: 4402210469502939287
+      spriteID: 30890868c318476f0800000000000000
+      internalID: -687782746126247933
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Play Button Sprite_0: 4402210469502939287
+      New-Gate2-Ruined_0: -687782746126247933
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ee33db7a38a8415409a01a5eaf6fdafa
+guid: 6aead49d917ab7e489d2cc77faf50b78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8398950293122100699
-    second: New-Gate2-Closed_0
+      213: -4360139030549193187
+    second: G2-Ruined_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,11 +96,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New-Gate2-Closed_0
+      name: G2-Ruined_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5225b4c353fe07b80800000000000000
-      internalID: -8398950293122100699
+      spriteID: d1e9cc817acad73c0800000000000000
+      internalID: -4360139030549193187
       vertices: []
       indices: 
       edges: []
@@ -134,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      New-Gate2-Closed_0: -8398950293122100699
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

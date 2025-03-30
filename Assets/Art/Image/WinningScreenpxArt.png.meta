@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c7b3a93d2042a643b1187e98a643a09
+guid: bfcdb4283023e2647ad927bbf548019a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7079691698286995441
-    second: pxArt (10)_0
+      213: -1384479940339304299
+    second: WinningScreenpxArt_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pxArt (10)_0
+      name: WinningScreenpxArt_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 378
-        height: 316
+        width: 4128
+        height: 2064
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f7adabf61e104260800000000000000
-      internalID: 7079691698286995441
+      spriteID: 598fb6d54d659cce0800000000000000
+      internalID: -1384479940339304299
       vertices: []
       indices: 
       edges: []
