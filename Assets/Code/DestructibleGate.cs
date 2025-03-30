@@ -34,6 +34,7 @@ public class DestructibleGate : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        SoundFXManager.Instance.PlayGateDamage(transform.position);
 
         UpdateHealthUI();
         UpdateSprite();

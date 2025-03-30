@@ -41,6 +41,7 @@ public class HealthManager : MonoBehaviour
     {
         healthAmount -= damage;
         healthAmount = Mathf.Clamp(healthAmount, 0, 100f); // to make sure its not going under 0
+        SoundFXManager.Instance.PlayCastleDamage(transform.position);
         healthBar.fillAmount = healthAmount / 100f;
         Debug.Log("We took damage");
 

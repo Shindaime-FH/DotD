@@ -6,7 +6,10 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
+    public enum EnemyType { Knight, Zombie, Goblin }
+
     [Header("Attributes")]
+    [SerializeField] private EnemyType enemyType;
     [SerializeField] private int hitPoints = 2;
     [SerializeField] private int currencyworth = 10;
 
@@ -43,6 +46,8 @@ public class Health : MonoBehaviour
         hitPoints -= dmg;
         Debug.Log("Hitpoints after taking damage: " + hitPoints);
         Debug.Log("isDestroyed: " + isDestroyed);
+        SoundFXManager.Instance.PlayEnemyDamage(transform.position);
+        StartCoroutine(FlashRed());
         if (hitPoints <= 0 && !isDestroyed)
         {
             Debug.Log("Enemy is being destroyed. HitPoints: " + hitPoints + ", isDestroyed: " + isDestroyed);
@@ -76,6 +81,20 @@ public class Health : MonoBehaviour
             {
                 Debug.Log("Animator or EnemyMovement is null!");
             }
+      
+            switch (enemyType)
+            {
+                case EnemyType.Knight:
+                    SoundFXManager.Instance.PlayKnightDeath(transform.position);
+                    break;
+                case EnemyType.Zombie:
+                    SoundFXManager.Instance.PlayZombieDeath(transform.position);
+                    break;
+                case EnemyType.Goblin:
+                    SoundFXManager.Instance.PlayGoblinDeath(transform.position);
+                    break;
+            }
+
             SpawnCoin();        // new code which should spawn the coin after the enemy dies
             isDestroyed = true;
             StartCoroutine(DestroyAfterAnimation());
@@ -87,6 +106,19 @@ public class Health : MonoBehaviour
         }
         
     }
+
+    private IEnumerator FlashRed()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            Color original = sr.color;
+            sr.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            sr.color = original;
+        }
+    }
+
     private void SpawnCoin()
     {
         // Add this null check

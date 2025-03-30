@@ -7,34 +7,29 @@ using UnityEngine.Rendering.PostProcessing;
 public class SettingsManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Slider volumeSlider;
-    [SerializeField] private Toggle muteToggle;
+    [SerializeField] private Slider masterSlider;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
     [SerializeField] private Button closeButton;
     [SerializeField] private RectTransform blurPanel;
     [SerializeField] private CanvasGroup canvasGroup; // Add this serialized field
 
     private void Start()
     {
-        InitializeUI();
-        StartCoroutine(FadeIn());
+        InitializeSliders();
     }
 
-    private void InitializeUI()
+    private void InitializeSliders()
     {
-        // Audio Controls
-        volumeSlider.value = AudioManager.Instance.masterVolume;
-        muteToggle.isOn = !AudioManager.Instance.isMuted;
+        // Load saved values or default to 1
+        masterSlider.value = PlayerPrefs.GetFloat(SoundMixerManager.MASTER_VOLUME, 1f);
+        musicSlider.value = PlayerPrefs.GetFloat(SoundMixerManager.MUSIC_VOLUME, 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat(SoundMixerManager.SFX_VOLUME, 1f);
 
-        volumeSlider.onValueChanged.AddListener(v => {
-            AudioManager.Instance.SetMasterVolume(v);
-        });
-
-        muteToggle.onValueChanged.AddListener(m => {
-            AudioManager.Instance.SetMuted(!m);
-        });
-
-        // Close Button
-        closeButton.onClick.AddListener(CloseSettings);
+        // Add listeners
+        masterSlider.onValueChanged.AddListener(SoundMixerManager.Instance.SetMasterVolume);
+        musicSlider.onValueChanged.AddListener(SoundMixerManager.Instance.SetMusicVolume);
+        sfxSlider.onValueChanged.AddListener(SoundMixerManager.Instance.SetSFXVolume);
     }
 
     public void CloseSettings()

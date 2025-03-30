@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81213099f5031c14d85554352903a098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 2
   hitPoints: 2
   currencyworth: 10
   coinPrefab: {fileID: 2489070444124667776, guid: d7fc9b7c5e4fdef4ea60fceddf9663cc, type: 3}

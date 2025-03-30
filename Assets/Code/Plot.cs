@@ -75,5 +75,7 @@ public class Plot : MonoBehaviour
 
         // (Optional) Check if clicking on UI.
         if (EventSystem.current.IsPointerOverGameObject()) return;
+
+        SoundFXManager.Instance.PlayTowerPlaced(transform.position);
     }
 }

@@ -147,6 +147,7 @@ public class MageSlomo : MonoBehaviour
 
                 StartCoroutine(ResetEnemySpeed(em, enemySprite));
             }
+            SoundFXManager.Instance.PlayMageAttack(transform.position);
         }
     }
 

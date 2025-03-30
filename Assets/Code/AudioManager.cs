@@ -5,12 +5,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("Base Volumes")]
-    [SerializeField] private float lobbyBase = 0.5f;
-    [SerializeField] private float cutsceneBase = 0.2f;
-    [SerializeField] private float levelBase = 0.04f;
-
-    [Header("Current Settings")]
+    private float lobbyBase = 0.5f;
+    private float cutsceneBase = 0.2f;
+    private float levelBase = 0.04f;
     public float masterVolume = 1f;
     public bool isMuted = false;
 
