@@ -45,6 +45,9 @@ TagManager:
   - name: Turrets
     uniqueID: 2770014887
     locked: 0
+  - name: Upgrade
+    uniqueID: 3827017813
+    locked: 0
   - name: Jewel
     uniqueID: 571886313
     locked: 0

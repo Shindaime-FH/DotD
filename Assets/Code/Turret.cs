@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class Turret : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Turret : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private int baseUpgradeCost = 150;
     [SerializeField] private TextMeshProUGUI currencyUI;
+    [SerializeField] private GameObject animationHolder;
+
+    private Animator animator;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -35,6 +39,8 @@ public class Turret : MonoBehaviour
         targetingRangeBase = targetingRange;
 
         upgradeButton.onClick.AddListener(Upgrade);     //So it will close the UI
+
+        animator = animationHolder.GetComponent<Animator>();
     }
     private void OnDrawGizmosSelected()
     {
@@ -71,17 +77,36 @@ public class Turret : MonoBehaviour
         bps = CalculateBPS();
         targetingRange = CalculateRange();
 
+        //Showing the upgrade animation
+        StartCoroutine(PlayUpgradeEffect());
+
         CloseUpgradeUI();
         Debug.Log("New BPS: " + bps);
         Debug.Log("New TR: "+ targetingRange); 
         Debug.Log("New Cost: "+ CalculateCost());
         currencyUI.text = CalculateCost().ToString();
     }
+
+    private IEnumerator PlayUpgradeEffect()
+    {
+        // Get SpriteRenderer component
+        SpriteRenderer sr = animationHolder.GetComponent<SpriteRenderer>();
+        sr.enabled = true;  // Make visible
+
+        // Play animation
+        animator.Play("UpgradePoof", -1, 0f);
+
+        // Wait for animation length
+        float length = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(length);
+
+        sr.enabled = false; // Hide again
+    }
+
     private int CalculateCost()
     {
         return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 0.8f));      // Cost get more expensive after upgrade
     }
-
     private float CalculateBPS()
     {
         return bpsBase * Mathf.Pow(level, 0.2f);

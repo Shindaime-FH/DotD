@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 using TMPro;
 
+
 public class MageSlomo : MonoBehaviour
 {
     [Header("References")]
@@ -13,6 +14,9 @@ public class MageSlomo : MonoBehaviour
     [SerializeField] private int baseUpgradeCost = 250;
     [SerializeField] private GameObject freezeEffectPrefab;
     [SerializeField] private TextMeshProUGUI currencyUI;
+    [SerializeField] private GameObject animationHolder;
+
+    private Animator animator;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -32,6 +36,7 @@ public class MageSlomo : MonoBehaviour
         targetingRangeBase = targetingRange;
 
         upgradeButton.onClick.AddListener(Upgrade);
+        animator = animationHolder.GetComponent<Animator>();
     }
 
     private void Update()
@@ -88,13 +93,30 @@ public class MageSlomo : MonoBehaviour
         aps = CalculateAPS();
         targetingRange = CalculateRange();
 
+        //Showing the upgrade animation
+        StartCoroutine(PlayUpgradeEffectMage());
+
         CloseUpgradeUIMage();
         Debug.Log("New APS: " + aps);
         Debug.Log("New AR: " + targetingRange);
         Debug.Log("New Cost: " + CalculateCostMage());
         currencyUI.text = CalculateCostMage().ToString();
     }
+    private IEnumerator PlayUpgradeEffectMage()
+    {
+        // Get SpriteRenderer component
+        SpriteRenderer sr = animationHolder.GetComponent<SpriteRenderer>();
+        sr.enabled = true;  // Make visible
 
+        // Play animation
+        animator.Play("UpgradePoof", -1, 0f);
+
+        // Wait for animation length
+        float length = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(length);
+
+        sr.enabled = false; // Hide again
+    }
     private int CalculateCostMage()
     {
         return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));

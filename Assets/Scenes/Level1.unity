@@ -8366,7 +8366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  repairRate: 0.825
+  repairRate: 1.5
   brokenSprite: {fileID: -4023815799163685239, guid: 6f5c10b59c2beb747960e506956309c6, type: 3}
   midRepairedSprite: {fileID: -4519785749096499593, guid: 82a582c8b1917544b88d7496491e7353, type: 3}
   fullyRepairedSprite: {fileID: -2050461810738023566, guid: d7e7093ba3102414995ce3dbe602afa0, type: 3}
