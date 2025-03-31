@@ -19,7 +19,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float bps = 1f;        //bullet per second
 
-    public static CurrencyPickup CurrencyPickup = new CurrencyPickup();
+    //public static CurrencyPickup CurrencyPickup = new CurrencyPickup();
 
     private float bpsBase;
     private float targetingRangeBase;

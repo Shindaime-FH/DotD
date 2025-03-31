@@ -23,35 +23,54 @@ public class MageSlomo : MonoBehaviour
     public Transform target;
     private float timeUntilFire;
     private int level = 1;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     private void Start()
     {
         apsBase = aps;
         targetingRangeBase = targetingRange;
 
-        upgradeButton.onClick.AddListener(Upgrade);     //So it will close the UI
+        upgradeButton.onClick.AddListener(Upgrade);
     }
 
-    // Update is called once per frame
     private void Update()
     {
         timeUntilFire += Time.deltaTime;
 
         if (timeUntilFire >= 1f / aps)
         {
-            FreezeEnemies();
-            timeUntilFire = 0f;
+            if (EnemiesInRange())
+            {
+                FreezeEnemies();
+                timeUntilFire = 0f;
+            }
+            else
+            {
+                // Cap the timer at the attack interval to prevent immediate attack after enemy enters range
+                timeUntilFire = Mathf.Min(timeUntilFire, 1f / aps);
+            }
         }
+    }
+
+    private bool EnemiesInRange()
+    {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+        foreach (var hit in hits)
+        {
+            if (hit.transform.GetComponent<EnemyMovement>() != null)
+                return true;
+        }
+        return false;
     }
 
     public void OpenUpgradeUIMage()
     {
         upgradeUI.SetActive(true);
     }
+
     public void CloseUpgradeUIMage()
     {
         upgradeUI.SetActive(false);
-        UIManager.main.SetHoveringState(false);     // to prevent the bug where you can't open up the UI anymore after opening it up once
+        UIManager.main.SetHoveringState(false);
     }
 
     public void Upgrade()
@@ -72,9 +91,10 @@ public class MageSlomo : MonoBehaviour
         Debug.Log("New AR: " + targetingRange);
         Debug.Log("New Cost: " + CalculateCostMage());
     }
+
     private int CalculateCostMage()
     {
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));      // Cost get more expensive after upgrade
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));
     }
 
     private float CalculateAPS()
@@ -86,9 +106,10 @@ public class MageSlomo : MonoBehaviour
     {
         return targetingRangeBase * Mathf.Pow(level, 0.15f);
     }
+
     private IEnumerator FadeAndDestroy(SpriteRenderer sprite, GameObject freezeEffect)
     {
-        float fadeDuration = 1f;  // Time to fade out
+        float fadeDuration = 1f;
         float elapsedTime = 0f;
         Color startColor = sprite.color;
 
@@ -100,38 +121,13 @@ public class MageSlomo : MonoBehaviour
             yield return null;
         }
 
-        Destroy(freezeEffect); // Remove the effect after fading
+        Destroy(freezeEffect);
     }
 
     private void FreezeEnemies()
     {
-        /* Old Code
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
-
-        if (hits.Length > 0)
-        {
-            for (int i = 0; i < hits.Length; i++)
-            {
-                RaycastHit2D hit = hits[i];
-
-                EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
-                em.UpdateSpeed(0.5f);
-
-                StartCoroutine(ResetEnemySpeed(em));
-            }
-        }*/
-        // Instantiate and scale the freeze effect
-        GameObject freezeEffect = Instantiate(freezeEffectPrefab, transform.position, Quaternion.identity);
-
-        float effectScale = targetingRange * 1.5f; // Adjust size to match AoE
-        freezeEffect.transform.localScale = new Vector3(effectScale, effectScale, 1);
-
-        // Start fade-out animation
-        SpriteRenderer freezeEffectSprite = freezeEffect.GetComponent<SpriteRenderer>();
-        StartCoroutine(FadeAndDestroy(freezeEffectSprite, freezeEffect));
-
-        // Apply slow effect to enemies in range
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
+        bool hitEnemies = false;
 
         foreach (var hit in hits)
         {
@@ -140,28 +136,39 @@ public class MageSlomo : MonoBehaviour
 
             if (em == null) continue;
 
-            if (em != null && enemySprite != null)
-            {
-                em.UpdateSpeed(0.5f); // Slow down enemy speed by 50%
-                enemySprite.color = Color.cyan;
+            hitEnemies = true;
 
-                StartCoroutine(ResetEnemySpeed(em, enemySprite));
-            }
+            em.UpdateSpeed(0.5f);
+            enemySprite.color = Color.cyan;
+
+            StartCoroutine(ResetEnemySpeed(em, enemySprite));
+        }
+
+        if (hitEnemies)
+        {
+            // Create smoke effect
+            GameObject freezeEffect = Instantiate(freezeEffectPrefab, transform.position, Quaternion.identity);
+            float effectScale = targetingRange * 1.5f;
+            freezeEffect.transform.localScale = new Vector3(effectScale, effectScale, 1);
+            SpriteRenderer freezeEffectSprite = freezeEffect.GetComponent<SpriteRenderer>();
+            StartCoroutine(FadeAndDestroy(freezeEffectSprite, freezeEffect));
+
+            // Play sound
             SoundFXManager.Instance.PlayMageAttack(transform.position);
         }
     }
 
-    private IEnumerator ResetEnemySpeed (EnemyMovement em, SpriteRenderer enemySprite)
+    private IEnumerator ResetEnemySpeed(EnemyMovement em, SpriteRenderer enemySprite)
     {
         yield return new WaitForSeconds(freezeTime);
 
         em.ResetSpeed();
 
-        // Fade out the baby blue color
+        // Fade out the color
         float fadeDuration = 1f;
         float elapsedTime = 0f;
         Color startColor = enemySprite.color;
-        Color normalColor = Color.white;  // Change to default color
+        Color normalColor = Color.white;
 
         while (elapsedTime < fadeDuration)
         {
@@ -170,6 +177,7 @@ public class MageSlomo : MonoBehaviour
             yield return null;
         }
     }
+
     private void OnDrawGizmosSelected()
     {
 #if UNITY_EDITOR
@@ -178,4 +186,3 @@ public class MageSlomo : MonoBehaviour
 #endif
     }
 }
-

@@ -12,6 +12,8 @@ public class CurrencyPickup : MonoBehaviour
     private Animator animator;
     public int GetCurrencyWorth() => currencyWorth;
 
+    public static CurrencyPickup Instance { get; private set; }
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -30,6 +32,11 @@ public class CurrencyPickup : MonoBehaviour
                 Debug.LogError("Currency UI TextMeshProUGUI not found!");
             }
         }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
     }
 
     private void Update()
