@@ -143,6 +143,7 @@ MonoBehaviour:
   upgradeUI: {fileID: 7711703615830571384}
   upgradeButton: {fileID: 3822477845845806259}
   baseUpgradeCost: 100
+  currencyUI: {fileID: 491942272848104382}
   targetingRange: 4
   rotationSpeed: 200
   bps: 1
@@ -320,7 +321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UPGRADE
+  m_text: 150
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

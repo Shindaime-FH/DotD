@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Turret : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
-    [SerializeField] private int baseUpgradeCost = 100;
-
+    [SerializeField] private int baseUpgradeCost = 150;
+    [SerializeField] private TextMeshProUGUI currencyUI;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -74,6 +75,7 @@ public class Turret : MonoBehaviour
         Debug.Log("New BPS: " + bps);
         Debug.Log("New TR: "+ targetingRange); 
         Debug.Log("New Cost: "+ CalculateCost());
+        currencyUI.text = CalculateCost().ToString();
     }
     private int CalculateCost()
     {

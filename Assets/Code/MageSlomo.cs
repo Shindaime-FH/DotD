@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
+using TMPro;
 
 public class MageSlomo : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class MageSlomo : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
-    [SerializeField] private int baseUpgradeCost = 200;
+    [SerializeField] private int baseUpgradeCost = 250;
     [SerializeField] private GameObject freezeEffectPrefab;
+    [SerializeField] private TextMeshProUGUI currencyUI;
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -90,6 +92,7 @@ public class MageSlomo : MonoBehaviour
         Debug.Log("New APS: " + aps);
         Debug.Log("New AR: " + targetingRange);
         Debug.Log("New Cost: " + CalculateCostMage());
+        currencyUI.text = CalculateCostMage().ToString();
     }
 
     private int CalculateCostMage()

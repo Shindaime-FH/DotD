@@ -315,7 +315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UPGRADE
+  m_text: 250
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -496,6 +496,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 4975075439028896921}
   baseUpgradeCost: 200
   freezeEffectPrefab: {fileID: 6430251276988696946, guid: db582cac344befc458a1f2f73c22d0a6, type: 3}
+  currencyUI: {fileID: 4745703452634029615}
   targetingRange: 2
   aps: 0.25
   freezeTime: 1
